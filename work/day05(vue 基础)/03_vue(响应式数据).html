@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}<!--插值表达式-->
+    </div>
+</body>
+<!--在全局就会多一个函数 Vue-->
+<script src="./js/vue.js"></script>
+<script>
+    /* vue的三大特征
+        1. 声明式编程
+        2. 响应式数据
+        3. 数据双向绑定
+    */
+    //消除vue的生产提示
+    Vue.config.productionTip = false;
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            msg:"hello vue"
+        },
+        //mounted不能写成箭头函数
+        mounted(){
+            setTimeout(()=>{
+                this.msg = "周冬雨离不开达姆"
+            },3000)
+        }
+    })
+
+
+
+    //vue.js中那个Vue函数
+    /*function Vue(options) {
+        options.mounted.call(this)
+    }*/
+
+
+    // vue配置项中的data属性中的数据 都会转绑给vm实例对象
+    //响应式数据: data中的数据发生改变会引起界面的更新
+    //最佳实践: vue中的所有数据都应该要经过data的注册
+    //最佳实践: vue中的所有代码都应该写在配置对象内部
+    //回调函数: 是你定义的函数  你没调用 最终执行了
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        {{ Math.PI }}
+        {{ new Date() }}
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    /* vue的指令
+        {{}}  : 在插值表达式可以进行运算;但是不能进行自增 自减
+        v-text
+        v-html
+        v-show
+        v-if
+        v-else
+        v-else-if
+        v-for
+        v-on
+        v-bind
+        v-models
+        v-pre
+        v-cloak
+        v-once
+
+        v-slot
+    */
+    var a = "a";
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            msg:"hello vue",
+            flag:false
+        }
+    })
+
+</script>
+</html>

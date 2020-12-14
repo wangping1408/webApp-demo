@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <span>姓:</span><input type="text" v-model="firstName">
+        <span>名:</span><input type="text" v-model="lastName">
+        <span>姓名:</span><input type="text" v-model="fullName">
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            firstName:"T",
+            lastName:"Mac"
+        },
+        // 在vue中 如果分析到一个数据需要依赖于其他输的 那当前这个数据一定定义成计算属性
+        computed:{
+            fullName(){
+                console.log("-----")
+                // firstName & lastName 是 fullName的依赖
+                // 在计算属性 如果对应的依赖产生改变 计算属性会得到再一次的执行
+                return `${this.firstName}-${this.lastName}`
+            }
+        }
+    })
+</script>
+</html>

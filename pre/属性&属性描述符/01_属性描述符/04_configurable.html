@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var obj={
+			a:1
+		};
+
+        Object.defineProperty(obj,"a",{
+            value:5,
+            writable:false,
+            configurable:false,
+            emumerable:true
+        });
+
+		Object.defineProperty(obj,"a",{
+			value:6,
+			writable:false,
+			configurable:false,
+			emumerable:true
+		});
+
+        Object.seal(obj)
+	</script>
+</html>

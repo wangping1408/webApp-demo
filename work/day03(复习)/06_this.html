@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    /*ECMA262规范:
+        (ES5) this到底指向于谁?  看函数调用位置的调用形式
+                普通调用 this--> window: fn()
+                隐式调用 this--> obj: obj.fn()
+                显示调用 this--> obj: fn.call(obj)  fn.apply(obj)
+                构造调用 this--> 构造出来的实例对象 : new fn()
+
+        隐式丢失
+     */
+     //document.write("123")
+
+    var fn = document.write;
+    fn.call(document,"xxx")
+</script>
+</html>

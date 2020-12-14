@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //当then方法被执行完毕之后返回的也是一个promise
+    /*
+        then方法返回的promise实例的状态 是如何确定的?
+
+
+        如果你在使用then方法的时候 没有让then方法中回调返回一个promise
+        那么 你也是在瞎使用promise!!!!
+    */
+    var p = new Promise((resolve, reject)=>{
+         setTimeout(()=>{
+             resolve()
+         },2000)
+    })
+    p.then(()=>{
+        return new Promise((resolve, reject)=>{
+            setTimeout(()=>{
+                console.log(1)
+                resolve()
+            },1000)
+        })
+    }).then(()=>{
+        return new Promise((resolve, reject)=>{
+            setTimeout(()=>{
+                console.log(2)
+                resolve()
+            },1000)
+        })
+    })
+
+    console.log(3)
+
+
+
+</script>
+</html>

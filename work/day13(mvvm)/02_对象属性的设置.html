@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    /*1. 当对象上没有这个属性 可是原型链上有这个属性时
+            且这个属性是writable:false的
+            且这个属性有set方法
+    */
+
+    Object.defineProperty(Object.prototype,"a",{
+        get(){
+          return "a_prototype"
+        },
+        set(val){
+
+        }
+    })
+
+
+    var obj = {}
+    obj.a = "a";
+    console.log(obj)
+
+</script>
+</html>

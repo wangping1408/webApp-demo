@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+    <a href="http://www.atguigu.com/" style="font-size: 50px">回娘家</a>
+    <a href="http://www.atguigu.com/" style="font-size: 50px">回娘家</a>
+    <a href="http://www.atguigu.com/" style="font-size: 50px">回娘家</a>
+    <a href="http://www.atguigu.com/" style="font-size: 50px">回娘家</a>
+</body>
+<script>
+    window.onload=function () {
+        var aNodes = document.querySelectorAll("a");
+        aNodes.forEach((aNode)=>{
+            aNode.onclick=function (ev) {
+                ev = ev||event;
+                ev.preventDefault()
+            }
+
+            aNode.addEventListener("touchstart",function () {
+                console.log("touchstart")
+                this.isMoved = false;
+            })
+
+            //touchmove 在谷歌的模拟器中a标签的touchmove没有办法被触发
+            aNode.addEventListener("touchmove",function () {
+                console.log("touchmove")
+                this.isMoved = true;
+            })
+
+            aNode.addEventListener("touchend",function () {
+                console.log("touchend")
+                if(this.isMoved){
+                    return false
+                }
+                location.href = this.href
+            })
+        })
+    }
+
+
+
+</script>
+</html>

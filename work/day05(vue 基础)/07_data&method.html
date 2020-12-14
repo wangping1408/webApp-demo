@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="handleC">点我啊</button>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    //以后函数要定义在methods中 不要写在data中
+    Vue.config.productionTip = false;
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            handleC(){
+                console.log(this)
+            }
+        },
+        methods:{
+            handleC(){
+                console.log("我被点了")
+            }
+        }
+    })
+
+</script>
+</html>

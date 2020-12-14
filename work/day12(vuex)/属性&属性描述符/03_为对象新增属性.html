@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    "use strict"
+    var obj = {
+        name:"damu"
+    }
+
+    Object.defineProperty(obj,"age",{
+        get(){
+          return 18
+        },
+        set(val){
+            console.log(val)
+        },
+        enumerable:false,
+        configurable:false
+    })
+
+    obj.age = 19
+    console.log(obj.age)
+
+</script>
+</html>

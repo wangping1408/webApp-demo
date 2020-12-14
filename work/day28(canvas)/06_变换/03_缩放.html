@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #oc{
+            background: pink;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="oc" width="500" height="500"></canvas>
+</body>
+<script>
+    window.onload=function () {
+        var oc = document.querySelector("#oc");
+        if(oc.getContext){
+            var ctx = oc.getContext("2d");
+
+            /*放大的是css像素的面积;一个canvas画布中包含的css像素的个数变少
+            缩小的是css像素的面积;一个canvas画布中包含的css像素的个数变多*/
+            /*ctx.scale(.5,.5)
+            ctx.scale(.5,.5)*/
+            ctx.scale(.25,.25)
+            ctx.fillRect(100,100,90,90)
+
+
+        }
+    }
+</script>
+</html>

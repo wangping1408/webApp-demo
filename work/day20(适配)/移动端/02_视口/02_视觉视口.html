@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--content中的width代表的是布局视口的宽度;-->
+    <meta name="viewport" content="width=device-width">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <style>
+        #app{
+            width: 50px;
+            height: 100px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+<script>
+
+    // 视觉视口默认情况和布局视口保持一致(大小:包含的css像素的个数和位置都是一样的)
+    /*用户在进行缩放操作时:
+        放大: 看到的内容会越来越少 内容的布局是不会变的
+            视觉视口包含的css像素的个数会越来越少
+            可是每一个css像素占据的实际尺寸会越来越大 包含的物理像素的个数会越来越多
+            布局视口是不会得到改变的
+
+        缩小: 看到的内容会越来越多 内容的布局是不会变的
+            视觉视口包含的css像素的个数会越来越多
+            可是每一个css像素占据的实际尺寸会越来越小 包含的物理像素的个数会越来越少
+            布局视口是不会得到改变的*/
+
+</script>
+</html>

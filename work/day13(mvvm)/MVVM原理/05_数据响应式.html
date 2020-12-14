@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--msg的dep对应了 2个watcher-->
+    <div id="app">
+        {{msg}}
+        <span v-html="msg"></span>
+    </div>
+</body>
+<script src="./MVVM/compile.js"></script>
+<script src="./MVVM/mvvm.js"></script>
+<script src="./MVVM/observer.js"></script>
+<script src="./MVVM/watcher.js"></script>
+<script>
+   /* 1. 在数据劫持时!! 我们是不是为每一个data中属性都分配了一个dep
+            每一个属性对应的get方法都具有一个dep闭包*/
+
+   /*2. 在模板解析的最后一步 我们会创建一个watcher对象
+            每一个指令都会一个watcher(持有着对应指令的更新器)*/
+
+   /*3. 指令和数据(data的属性)之间的关系!!!
+        <span v-text="damu.name.wife"></span> : 一个指令对应了多个数据
+
+        <span v-text="damu"></span>
+        <i v-html="damu"></i>    :  一个数据对应了多个指令
+
+       <span v-text="damu.name.wife"></span>
+       <i v-html="damu.name.wife"></i>    : 指令与数据之间有着一个多对多的关系
+    */
+
+    // 看vue如何抽象指令与数据之间有着多对多的关系  (dep和watcher之间的多对多关系)
+
+    var vm = new MVVM({
+        el:"#app",
+        data:{
+            msg:"hello vue"
+        }
+    })
+
+
+    //数据具有响应式!!!
+    setTimeout(function () {
+        vm.msg = "test"
+    },2000)
+</script>
+</html>

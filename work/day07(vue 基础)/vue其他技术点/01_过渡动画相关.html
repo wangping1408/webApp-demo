@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #test{
+            width: 150px;
+            height: 150px;
+            background: pink;
+            opacity: 1;
+        }
+        .damu-leave-active{
+            transition: 3s all !important;
+        }
+        .damu-leave-to{
+            opacity: 0 !important;
+        }
+
+        .damu-enter{
+            opacity: 0 !important;
+        }
+        .damu-enter-active{
+            transition: 3s all !important;
+        }
+        .damu-enter-to{
+            opacity: 1 !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="flag=!flag">click</button>
+        <transition name="damu">
+            <div id="test" v-show="flag">
+                test
+            </div>
+        </transition>
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    /*vue的过渡动画 说白了 只是在一定的环境下给我们对应的元素添加一些的class
+        当元素从 显示 -- 隐藏
+            v-leave-active
+            v-leave-to
+        当元素从 隐藏 -- 显示
+            v-enter
+            v-enter-active
+            v-enter-to
+     */
+
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            flag:true
+        }
+    })
+</script>
+</html>

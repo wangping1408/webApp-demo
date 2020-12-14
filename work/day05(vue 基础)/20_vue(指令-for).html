@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--v-bind使用在一些之前不归vue解析 现在需要vue解析的一些标签属性上-->
+    <div id="app">
+        <ul>
+            <li v-for="(item,index) in list">
+                {{index}} / {{item}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="(val,key,index) in obj">
+                {{index}} / {{key}} / {{val}}
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    Vue.config.productionTip = false;
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            list:["猫","狗","龙","猪","鸡","鸭"],
+            obj:{
+                name:"damu",
+                wife:"dy",
+                son:"qhf"
+            }
+        }
+    })
+</script>
+</html>

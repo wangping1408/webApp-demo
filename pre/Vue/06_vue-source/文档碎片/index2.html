@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        <li>达姆</li>
+        <li>老刘</li>
+        <li>老付</li>
+        <li>啊芳</li>
+    </ul>
+</body>
+<script>
+    window.onload=function () {
+        var ulNode = document.querySelector("ul");
+        //创建一个文档碎片
+        var fragment = document.createDocumentFragment();
+        var child = null;
+        //firstChild 会考虑文本节点的
+        while (ulNode.firstChild){
+            //剪切操作
+            fragment.appendChild(ulNode.firstChild)
+        }
+
+        //dom树中将不会再有节点  而文档碎片中会塞入所有的ul的子节点
+
+        //进行大量的dom操作  且界面不会更新  提供了dom操作的性能
+        Array.from(fragment.children).forEach((item)=>{
+            item.innerHTML = "尚硅谷-" + item.innerHTML;
+        })
+
+        //appendChild 让 fragment作为参数  最终追加到文档中的是fragment的子节点列表 而不是fragment本身
+        ulNode.appendChild(fragment)
+    }
+</script>
+</html>

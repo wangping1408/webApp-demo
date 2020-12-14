@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrap{
+            width: 200px;
+            height: 200px;
+            background: deeppink;
+        }
+        .inner{
+            width: 150px;
+            height: 150px;
+            background: hotpink;
+        }
+        .test{
+            width: 100px;
+            height: 100px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="wrap" @click="handleCForWrap">wrap
+            <div class="inner" @click="handleCForInner">inner
+                <div class="test" @click.stop="handleCForTest">test
+
+                </div>
+            </div>
+        </div>
+
+        <a href="http://www.atguigu.com/" @click.prevent="handleC">回娘家</a>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    //以后函数要定义在methods中 不要写在data中
+    Vue.config.productionTip = false;
+    var vm = new Vue({
+        el:"#app",
+        methods:{
+            handleCForWrap(){
+                console.log("我是wrap")
+            },
+            handleCForInner(){
+                console.log("我是inner")
+            },
+            handleCForTest(){
+                console.log("我是test")
+            },
+            handleC(){
+                console.log("---")
+            }
+        }
+    })
+
+</script>
+</html>

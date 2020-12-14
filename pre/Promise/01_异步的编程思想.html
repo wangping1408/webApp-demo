@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--
+        1. 函数化编程
+        2. 异步编程
+
+        浏览器的一个软件  它的模型是多进程 多线程的!!
+        浏览器中解析js的v8引擎 是单线程的
+        而且在浏览器中 只有v8引擎有能力执行js代码
+
+        队列:
+    -->
+</head>
+<body>
+
+</body>
+<script>
+    /*
+    定时器的回调肯定是2000ms之后被塞入到异步队列中;
+    可是这个事回调的执行 不一定是精确的2000ms钟
+    肯定要比2000ms 来的长
+    */
+
+    setTimeout(()=>{
+        console.log("setTimeout")
+    },2000)
+
+   // 浏览器的事件循环机制
+</script>
+</html>

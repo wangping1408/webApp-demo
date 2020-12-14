@@ -1,0 +1,131 @@
+.seller_header {
+  background: rgba(7,17,27,0.5);
+  position: relative;
+  overflow: hidden;
+}
+.seller_header > .top {
+  padding: 24px 12px 18px 24px;
+  display: flex;
+  position: relative;
+}
+.seller_header > .top .top_left {
+  width: 64px;
+  height: 64px;
+  margin-right: 16px;
+}
+.seller_header > .top .top_left .avatar {
+  width: 100%;
+  height: 100%;
+}
+.seller_header > .top .top_right {
+  color: #fff;
+}
+.seller_header > .top .top_right .title {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 18px;
+  margin-top: 2px;
+  margin-bottom: 8px;
+}
+.seller_header > .top .top_right .title .brand {
+  background-repeat: no-repeat;
+  background-size: 100%;
+  display: inline-block;
+  width: 30px;
+  height: 18px;
+}
+@media screen and (-webkit-device-pixel-ratio: 2) {
+  .seller_header > .top .top_right .title .brand {
+    background-image: url("brand@2x.png");
+  }
+}
+@media screen and (-webkit-device-pixel-ratio: 3) {
+  .seller_header > .top .top_right .title .brand {
+    background-image: url("brand@3x.png");
+  }
+}
+.seller_header > .top .top_right .title .name {
+  margin-left: 6px;
+}
+.seller_header > .top .top_right .delivery {
+  font-size: 12px;
+  font-weight: 200;
+  line-height: 12px;
+}
+.seller_header > .top .top_right .delivery .info {
+  zoom: 1;
+}
+.seller_header > .top .top_right .supports {
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 200;
+  line-height: 12px;
+  margin-top: 10px;
+  margin-bottom: 2px;
+}
+.seller_header > .top .top_right .supports .text {
+  margin-left: 4px;
+}
+.seller_header > .top .top_right .supports .icon {
+  zoom: 1;
+}
+.seller_header > .bottom {
+  box-sizing: border-box;
+  width: 100%;
+  height: 28px;
+  padding: 0px 26px 0 12px;
+  background: rgba(7,17,27,0.2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #fff;
+  line-height: 28px;
+  font-size: 10px;
+  font-weight: 200;
+  position: relative;
+}
+.seller_header > .bottom .icon {
+  background-size: 100%;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 22px;
+  height: 12px;
+  margin-right: 4px;
+  position: relative;
+  top: 1px;
+}
+@media screen and (-webkit-device-pixel-ratio: 2) {
+  .seller_header > .bottom .icon {
+    background-image: url("bulletin@2x.png");
+  }
+}
+@media screen and (-webkit-device-pixel-ratio: 3) {
+  .seller_header > .bottom .icon {
+    background-image: url("bulletin@3x.png");
+  }
+}
+.seller_header > .bottom .text {
+  zoom: 1;
+}
+.seller_header > .bottom .arrow_right {
+  position: absolute;
+  right: 12px;
+  top: 8px;
+}
+.seller_header > .bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #ffc0cb;
+  z-index: -1;
+  filter: blur(3px);
+}
+.seller_header > .bg img {
+  width: 100%;
+  height: 100%;
+}

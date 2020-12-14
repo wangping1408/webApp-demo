@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <v-child>
+        <template #damu="obj">
+            <i>{{obj.a}} / {{obj.b}}</i>
+        </template>
+    </v-child>
+</div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+
+    /*
+         普通插槽 & 具名插槽
+             父向子传递html片段
+         作用域插槽
+             不光可以实现父向子传递html片段
+             还可以支持子向父传递数据
+    */
+
+    new Vue({
+        el:"#app",
+        components:{
+            "v-child":{
+                template:`<div>
+                            <span>xxxx</span>
+                            <slot name="damu" a="a" b="b"></slot>
+                          </div>`
+            }
+        }
+    })
+</script>
+</html>

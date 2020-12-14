@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <span>姓:</span><input type="text" v-model="firstName">
+        <span>名:</span><input type="text" v-model="lastName">
+        <span>姓名:</span><input type="text" v-model="fullName">
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            firstName:"T",
+            lastName:"Mac",
+            fullName:"T-Mac"
+        },
+        mounted(){
+            this.$watch("firstName",(val)=>{
+                console.log("firstName",val)
+            })
+        }
+        /*watch:{
+            firstName(val){this.fullName = val + '-' + this.lastName},
+            lastName(val){this.fullName = this.firstName + '-' + val}
+        }*/
+    })
+
+</script>
+</html>

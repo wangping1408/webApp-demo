@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #wrap{
+            width: 300px;
+            height: 300px;
+            border: 1px solid;
+
+            /*绝对定位元素盒模型的特性:
+                横向上所有的尺寸 + left + right = 包含块横向上的尺寸(视窗的尺寸)
+                    width               : 300
+                    padding-left        : 0
+                    padding-right       : 0
+                    border(left & right): 0
+                    margin-left         : auto
+                    margin-right        : auto
+                    left                : 0
+                    right               : 0
+            */
+
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+
+    </div>
+</body>
+</html>

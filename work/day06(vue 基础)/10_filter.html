@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var arr = ["a","b","c","d","f"]
+    //隐式迭代
+    var res = arr.filter(function(item,index,arr){
+        if(item === "a"){ return true}
+    })
+    console.log(res,arr);
+</script>
+</html>

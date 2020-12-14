@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    /*async function test() {
+       await setTimeout(()=>{console.log(1)},1000)
+       await setTimeout(()=>{console.log(2)},1000)
+       await setTimeout(()=>{console.log(3)},1000)
+       console.log("---")
+    }
+    test()*/
+
+
+    var res1 = setTimeout(()=>{console.log(1)},1000)
+    Promise.resolve(res1).then(()=>{
+        var res2 = setTimeout(()=>{console.log(2)},1000)
+        Promise.resolve(res2).then(()=>{
+            var res3 = setTimeout(()=>{console.log(3)},1000);
+            Promise.resolve(res3).then(()=>{
+                console.log("---")
+            })
+        })
+    })
+
+
+
+    /*async function test() {
+        await 4;
+        console.log("---")
+    }
+    test()
+
+    Promise.resolve(4).then(()=>{
+        console.log("---")
+    })*/
+
+</script>
+</html>

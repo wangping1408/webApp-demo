@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+	</body>
+	<script type="text/javascript">
+		var arr ={};
+		arr.length=3;
+		arr[0]=0;
+		arr[1]=1;
+		arr[2]=2;
+		
+		
+		var arr2 = Array.prototype.slice.call( arr );
+		arr2.push(3)
+		console.log(arr2);
+	</script>
+</html>

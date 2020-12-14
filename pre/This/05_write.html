@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // document.write("周冬雨biubiu达姆")
+
+    /*var fn = document.write;
+    fn("周冬雨biubiu达姆");*/
+
+    var obj ={
+        name:"obj",
+        write:function () {
+           if(this === obj){
+               console.log(this)
+           }else{
+               throw new Error("周冬雨太美了")
+           }
+        }
+    }
+    obj.write()
+
+    var fn = obj.write;
+    fn()
+
+</script>
+</html>

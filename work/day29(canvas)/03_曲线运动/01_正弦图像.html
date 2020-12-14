@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #app{
+            width: 10px;
+            height: 10px;
+            background: deeppink;
+            position: absolute;
+            left: 200px;
+            top: 300px;
+        }
+        .follow{
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    window.onload=function () {
+        var app = document.querySelector("#app");
+
+        //拿到元素一开始的位置
+        var startX = app.offsetLeft;
+        var startY = app.offsetTop;
+        var deg = 0;//度数
+        var stepX = 20;//系数
+        var stepY = 50;//系数
+        setInterval(()=>{
+            deg++;
+            app.style.left =  startX + Math.sin(deg*Math.PI/180)*stepY  + "px";
+            app.style.top = startY - (deg*Math.PI/180)*stepX + "px";
+
+
+            var divNode = document.createElement("div");
+            divNode.classList.add("follow");
+            divNode.style.left = app.offsetLeft + "px";
+            divNode.style.top = app.offsetTop + "px";
+            document.body.appendChild(divNode)
+        },1000/60)
+    }
+</script>
+</html>

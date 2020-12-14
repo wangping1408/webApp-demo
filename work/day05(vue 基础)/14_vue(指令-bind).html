@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .red{
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        .pink{
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background: pink;
+        }
+        .big{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!--v-bind使用在一些之前不归vue解析 现在需要vue解析的一些标签属性上-->
+    <div id="app">
+        <span :class="className">
+            xxx
+        </span>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    //以后函数要定义在methods中 不要写在data中
+    Vue.config.productionTip = false;
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            className:[{red:true},{big:true}]
+        }
+    })
+
+</script>
+</html>

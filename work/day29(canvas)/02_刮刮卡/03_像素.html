@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #oc{
+            background: pink;
+            position: absolute;
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<canvas id="oc" width="500" height="500"></canvas>
+</body>
+<script>
+    window.onload=function () {
+        var oc = document.querySelector("#oc");
+        if(oc.getContext){
+            var ctx = oc.getContext("2d");
+            ctx.fillRect(100,100,100,100);
+            console.log(ctx.getImageData(100,100,100,100))
+        }
+    }
+</script>
+</html>

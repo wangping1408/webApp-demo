@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <v-child>
+        <template>
+            <i>biubiubiu</i>
+            <i>biubiubiu</i>
+        </template>
+    </v-child>
+</div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    //新版本的插槽 在普通插槽的使用上和老版本是一致的
+
+    new Vue({
+        el:"#app",
+        components:{
+            "v-child":{
+                template:`<div>
+                            <span>xxxx</span>
+                            <slot></slot>
+                          </div>`
+            }
+        }
+    })
+</script>
+</html>

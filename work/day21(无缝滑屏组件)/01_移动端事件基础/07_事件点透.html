@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #wrap{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: pink;
+        }
+        #inner{
+            width: 200px;
+            height: 200px;
+            background: gray;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: .5;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <a href="http://www.atguigu.com/">回娘家</a>
+        <div id="inner">
+
+        </div>
+    </div>
+</body>
+<script>
+    // pc端的事件在移动端会有300ms的延迟
+    // click  touchstart&touchend
+
+    window.onload=function () {
+        //禁止全局事件的默认行为
+        var wrap = document.querySelector("#wrap");
+        wrap.addEventListener("touchstart",function (ev) {
+            ev = ev||event;
+            console.log(ev.cancelable)
+            ev.preventDefault()
+        })
+
+
+        //让遮罩消失
+        var inner = document.querySelector("#inner");
+        inner.addEventListener("touchend",function () {
+            this.style.display = "none";
+        });
+
+        //阻止移动端所有a标签的跳转行为
+        var aNodes = document.querySelectorAll("a");
+        aNodes.forEach((aNode)=>{
+            //自定义跳转逻辑
+            aNode.addEventListener("touchend",function () {
+                //bom:window
+                location.href = this.href
+            })
+        })
+    }
+
+
+
+</script>
+</html>

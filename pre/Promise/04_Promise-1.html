@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+   /* new Promise 返回的promise实例 它的状态跟执行器有关
+        如果执行器函数的第一个参数被调用  返回的promise实例的状态会变成成功状态
+        如果执行器函数的第二个参数被调用  返回的promise实例的状态会变成失败状态
+        如果执行器在被调用的过程中出现了异常 返回的promise实例的状态会变成失败状态*/
+
+    var p = new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+            throw new Error("xxx")
+        })
+    })
+
+   console.log(p);
+
+
+</script>
+</html>

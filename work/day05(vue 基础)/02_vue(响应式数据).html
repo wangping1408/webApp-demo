@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        {{msg2}}  <!--插值表达式-->
+    </div>
+</body>
+<!--在全局就会多一个函数 Vue-->
+<script src="./js/vue.js"></script>
+<script>
+    /* vue的三大特征
+        1. 声明式编程
+        2. 响应式数据
+        3. 数据双向绑定
+    */
+    //消除vue的生产提示
+    Vue.config.productionTip = false;
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            msg:"hello vue"
+        }
+    })
+
+    // vue配置项中的data属性中的数据 都会转绑给vm实例对象
+    //响应式数据: data中的数据发生改变会引起界面的更新
+    //最佳实践: vue中的所有数据都应该要经过data的注册
+    console.log(vm.msg)
+    setTimeout(()=>{
+        vm.msg = "周冬雨离不开达姆"
+    },3000)
+
+    vm.msg2 = "xxx";
+    setTimeout(()=>{
+        vm.msg2 = "yyy"
+    },5000)
+</script>
+</html>

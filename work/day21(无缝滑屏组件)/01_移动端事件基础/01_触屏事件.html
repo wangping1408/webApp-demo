@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Title</title>
+    <style>
+        #wrap{
+            width: 200px;
+            height: 200px;
+            background: pink;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+
+    </div>
+</body>
+<script>
+    /*
+        touchstart: 手指点击到一个元素上
+        touchmove: 手指在元素上滑动(手指必须点到元素上 没有触发touchstart肯定没有机会触发touchmove)
+        touchend: 手指从元素上抬起
+    */
+    /*
+        mousedown: 鼠标点击到一个元素上
+        mousemove: 鼠标在元素上滑动(mousemove不需要依赖于mousedown)
+        mouseup: 鼠标从元素上抬起
+    */
+    var wrap = document.querySelector("#wrap")
+    wrap.addEventListener("touchstart",()=>{console.log("touchstart")})
+    wrap.addEventListener("touchmove",()=>{console.log("touchmove")})
+    wrap.addEventListener("touchend",()=>{console.log("touchend")})
+</script>
+</html>

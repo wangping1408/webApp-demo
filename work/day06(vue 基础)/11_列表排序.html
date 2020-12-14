@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="inText">
+        <ul>
+            <li v-for="item in filterList">
+                {{item.name}} / {{item.wife}} / {{item.age}}
+            </li>
+        </ul>
+        <button @click="up">升序</button>
+        <button @click="down">降序</button>
+        <button @click="orgin">原顺序</button>
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            inText:"",
+            order:0, //1:升序  -1:降序  0:原本顺序
+            list:[
+                {name:"达姆",wife:"冬雨",age:35},
+                {name:"李强",wife:"刘渊",age:16},
+                {name:"海峰",wife:"立超",age:38},
+                {name:"忠国",wife:"张弛",age:14},
+                {name:"小乐",wife:"随便",age:8},
+                {name:"小达姆",wife:"小冬雨",age:3}
+            ]
+        },
+        computed:{
+            filterList(){
+                var filterList =  this.list.filter((item,index,arr)=>{
+                    return item.name.includes(this.inText)
+                })
+
+                switch (this.order){
+                    case 1:
+                        filterList.sort((a,b)=>{
+                            return a.age - b.age
+                        })
+                        break;
+                    case -1:
+                        filterList.sort((a,b)=>{
+                            return b.age - a.age
+                        })
+                        break;
+                    case 0:
+                        break;
+                }
+
+                return filterList
+            }
+        },
+        methods:{
+            up(){this.order = 1},
+            down(){this.order = -1},
+            orgin(){this.order = 0}
+        }
+    })
+</script>
+</html>

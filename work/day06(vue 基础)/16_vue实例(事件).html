@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    Vue.config.productionTip = false;
+    var vm = new Vue({
+        el:"#app"
+    })
+
+
+    function one (){
+        console.log(1)
+    }
+
+    vm.$on("zdy",()=>{})
+    vm.$on("damu",one)
+    vm.$on("damu",()=>{console.log(2)})
+    vm.$on("damu",()=>{console.log(3)})
+
+
+    setTimeout(()=>{
+        vm.$off("damu",one)
+    },2000)
+
+    setTimeout(()=>{
+       vm.$emit("damu")
+    },4000)
+</script>
+</html>

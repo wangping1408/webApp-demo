@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        body{
+            background: gray;
+        }
+        canvas{
+            background: white;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="200" height="500">
+
+    </canvas>
+</body>
+<script>
+
+    //多个图形在做动画
+    window.onload=function () {
+        var canvasNode = document.querySelector("canvas");
+        canvasNode.width = document.documentElement.clientWidth;
+        canvasNode.height = document.documentElement.clientHeight;
+        if (canvasNode.getContext){
+            var ctx =canvasNode.getContext("2d");
+            //放随机圆的信息  圆心 半径
+            var arr =[];
+            setInterval(function () {
+                ctx.clearRect(0,0,canvasNode.width,canvasNode.height)
+                //动画！！！！
+                arr.forEach(function (item,index) {
+                    item.deg+=5;
+                    item.x = item.startX + Math.sin((item.deg*Math.PI/180)) * item.stepY ;
+                    item.y = item.startY - (item.deg*Math.PI/180)* item.stepX;
+
+                    if(item.y <=-item.r){
+                        arr.splice(1,index)
+                    }
+                })
+
+
+                //画圆
+                arr.forEach(function (item) {
+                    ctx.save()
+                    ctx.fillStyle="rgba("+item.red+","+item.green+","+item.blue+","+item.alp+")";
+                    ctx.beginPath()
+                    ctx.arc(item.x,item.y,item.r,0,2*Math.PI)
+                    ctx.fill()
+                    ctx.restore()
+                })
+
+            },10)
+
+
+            //提供随机圆
+            setInterval(function () {
+                var r = Math.round(Math.random())*3+4;
+                var x = Math.round(Math.random()*canvasNode.width);
+                var y = canvasNode.height - r;
+                var red =Math.round(Math.random()*255);
+                var green =Math.round(Math.random()*255);
+                var blue =Math.round(Math.random()*255);
+                var alp =1;
+
+                var deg = 0;
+                var startX = x;
+                var startY = y;
+                var stepX = Math.round(Math.random()*20)+10;
+                var stepY = Math.round(Math.random()*50)+10;
+
+                arr.push({
+                    x:x,
+                    y:y,
+                    r:r,
+                    red:red,
+                    green:green,
+                    blue:blue,
+                    alp:alp,
+
+                    deg:deg,
+                    startX:startX,
+                    startY:startY,
+                    stepX:stepX,
+                    stepY:stepY
+                })
+            },20)
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        xxx
+    </div>
+</body>
+<script>
+    /*
+    元素节点的nodeType:1
+    属性节点的nodeType:2
+    文本节点的nodeType:3
+    */
+    var appNode = document.querySelector("#app");
+    console.dir(appNode);
+    console.dir(appNode.childNodes[0]);
+    console.dir(appNode.getAttributeNode("id"));
+</script>
+</html>

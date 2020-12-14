@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		//sort + map
+		var arr = [1,2,1,2,3,5,4,5,3,4,4,4,4];
+		function qucong(arr){
+			var result = [];
+			arr.sort().map(function(item){
+				if(result.length===0 || result[result.length-1]!==item ){
+					result.push(item);
+				}
+			})
+			return result;
+		}
+		console.log(qucong(arr));
+		
+	
+		//sort + reduce
+		var arr = ["展示","展示",2,1,2,3,5,4,5,3,4,4,4,4];
+		var result = arr.sort().reduce(function(init, current){
+		    if(init.length===0 || init[init.length-1]!==current){
+		        init.push(current);
+		    }
+		    return init;
+		}, []);
+		console.log(result); //[1,2,3,4,5]
+		
+	</script>
+</html>

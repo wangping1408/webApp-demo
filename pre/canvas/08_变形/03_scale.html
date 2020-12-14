@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        body{
+            background: pink;
+        }
+        canvas{
+            background: gray;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+
+            /*通过css设置画布的大小 会缩放画布上图形*/
+            /*width: 600px;
+            height: 600px;*/
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="600">
+
+    </canvas>
+</body>
+<script>
+    window.onload=function () {
+        var canvasNode = document.querySelector("canvas");
+        if(canvasNode && canvasNode.getContext){
+            var ctx = canvasNode.getContext("2d");
+
+           /* css像素理解成抽象单位
+                放大: 使一个css像素的面积变大  区域里包含的css像素的个数变少
+                缩小: 使一个css像素的面积变小  区域里包含的css像素的个数变多
+            */
+
+
+           // 缩放是累积的
+            /*ctx.scale(.5,.5);
+            ctx.scale(.3,.3);*/
+            ctx.scale(.15,.15)
+            ctx.fillRect(50,50,100,100);
+        }
+    }
+</script>
+</html>

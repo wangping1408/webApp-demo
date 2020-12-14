@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+#wrap{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.swiper-wrap{
+    position: relative;
+}
+.swiper-wrap .swiper-list{
+    position: absolute;
+    left:0;
+    top:0;
+    /*width: 500%;*/
+    overflow: hidden;
+    list-style: none;
+}
+.swiper-wrap .swiper-list .swiper-item{
+    /*width: 20%;*/
+    float: left;
+}
+.swiper-wrap .swiper-list .swiper-item img{
+    width: 100%;
+    display: block;
+}
+.swiper-wrap .points-wrap {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 9;
+    width: 100%;
+}
+.swiper-wrap .points-wrap .points-list{
+    font-size: 0;
+    text-align: center;
+}
+.swiper-wrap .points-wrap .points-list .points-item{
+    width: 15px;
+    height: 15px;
+    background: black;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 3px;
+}
+.swiper-wrap .points-wrap .points-list .points-item.active{
+    background: red;
+}

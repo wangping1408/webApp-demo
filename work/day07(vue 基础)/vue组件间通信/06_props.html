@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <v-child :flag="flag"></v-child>
+</div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            flag:"1a23"
+        },
+        components:{
+            "v-child":{
+                props:{
+                    flag:{
+                        type:String,
+                        validator: function (value) {
+                            return  value.includes("a")
+                        }
+                    }
+                },
+                template:"<span>{{flag}}</span>",
+            }
+        }
+    })
+</script>
+</html>

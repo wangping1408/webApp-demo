@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var obj = {
+        a:"a",
+        ...{
+            b:"b"
+        }
+    }
+    console.log(obj);
+
+    var a = {a:"a"};
+    var b = {b:"b"};
+    var c = {c:"c"};
+    var obj3 = {...a,...b,...c}
+    console.log(obj3);
+
+    console.log(Object.assign(a, b, c));
+</script>
+</html>

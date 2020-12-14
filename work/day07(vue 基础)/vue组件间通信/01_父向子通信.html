@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <v-child msg="msg" msg2="msg2"></v-child>
+</div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+
+    /*父向子传递的数据 子组件不能直接修改;
+            要重新复制一份再修改(前提是各个子组件之间对数据没有同步的需求)*/
+
+    var vm = new Vue({
+        el:"#app",
+        components:{
+            "v-child":{
+                props:["msg","msg2"],
+                data(){
+                  return {
+                      "msgFromChild":this.msg
+                  }
+                },
+                template:"<span @click='handleC'>{{msgFromChild}}</span>",
+                methods:{
+                    handleC(){
+                        this.msgFromChild = "xxx"
+                    }
+                }
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var obj = {
+        name:'damu',
+        age:18,
+        wife:{
+            name:"dy",
+            age:18
+        }
+    }
+
+    //js中的方法动不了原型链上的属性 也动不了对象的嵌套属性
+    Object.freeze(obj);
+
+    obj.wife.name="8岁的冬雨";
+
+    Object.prototype.toString=function () {
+        return "----"
+    }
+    console.log(obj.toString())
+</script>
+</html>

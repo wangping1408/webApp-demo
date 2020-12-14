@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //如何判断一个对象是否具有对应的属性
+    // in关键帧可以上原型链
+    // 在js中所有的方法都是没有办法访问原型链的 只有关键帧才可以访问
+    var obj = {
+        a:undefined,
+        b:"b"
+    }
+    console.log("toString" in obj)
+    console.log(obj.hasOwnProperty("toString"))
+    console.log(obj.toString())
+    console.log(Object.getOwnPropertyNames(obj))
+</script>
+</html>

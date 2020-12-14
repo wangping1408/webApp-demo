@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!--v-bind使用在一些之前不归vue解析 现在需要vue解析的一些标签属性上-->
+    <div id="app">
+        <!--vue在完成对指令的解析后 都会将指令从标签上移除 避免污染标签-->
+        <!--v-cloak 是vue最后移除的那个指令-->
+        <div v-cloak>
+            <!--大量的静态标签;不需要vue来渲染的-->
+            {{msg}}
+            {{msg}}
+            {{msg}}
+            {{msg}}
+            {{msg}}
+            {{msg}}
+            {{msg}}
+            {{msg}}
+        </div>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    Vue.config.productionTip = false;
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            msg:"xxx"
+        }
+    })
+</script>
+</html>

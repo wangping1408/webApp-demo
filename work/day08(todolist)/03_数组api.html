@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  /*reduce() 方法对数组中的每个元素执行一个由您提供的reducer函数(升序执行)，
+  将其结果汇总为单个返回值。*/
+
+  /*
+      如果reduce方法给了初始值(初始值是给累加器的 item从第一个值开始) 那么reduce回调执行arr.length次
+      如果reduce方法没有给初始值(累加器拿数组中第一个值 item从第二个值开始) 那么reduce回调执行arr.length-1次
+  */
+
+  //不影响老数组
+  var arr = [1, 2, 3, 4, 5];
+  var res = arr.reduce((adder, item) => {
+    return adder + item;
+  },0)
+  console.log(res, arr); 
+</script>
+
+</html>

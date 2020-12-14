@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+
+    var p = new Promise((resolve, reject)=>{
+        resolve()
+    })
+
+    p.then(()=>{console.log("1");throw new Error("----")})
+     .then(()=>{console.log("2")})
+     .then(()=>{console.log("3")})
+     .then(()=>{console.log("4")})
+     .then(()=>{console.log("5")})
+     .then(()=>{console.log("6")})
+     // .then(()=>{},()=>{console.log("处理异常")})
+     .catch(()=>{console.log("处理异常");return Promise.reject()})
+     .then(()=>{console.log("7")},()=>{console.log("------")})
+
+
+
+</script>
+</html>

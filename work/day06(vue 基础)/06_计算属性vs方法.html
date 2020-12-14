@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--只要界面有更新 fullname就会被重新执行-->
+    <!--只有当firstName 或 lastName产生改变时 fullname被重新执行-->
+    <div id="app">
+        <span>姓:</span><input type="text" v-model="firstName">
+        <span>名:</span><input type="text" v-model="lastName">
+        <span>姓名:</span><input type="text" v-model="fullName()">
+        {{test}}
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            firstName:"T",
+            lastName:"Mac",
+            test:"test"
+        },
+        methods:{
+            fullName(){
+                console.log("fullname");
+                return `${this.firstName}-${this.lastName}`
+            }
+        },
+        mounted(){
+            setTimeout(()=>{
+                this.test = "xxx"
+            },2000)
+        }
+    })
+</script>
+</html>

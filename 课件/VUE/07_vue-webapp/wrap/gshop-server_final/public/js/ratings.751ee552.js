@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["ratings"],{"37ad":function(n,e,t){"use strict";t.r(e);var a=function(){var n=this,e=n.$createElement,t=n._self._c||e;return t("div",[n._v(" ratings ")])},i=[],r={name:"ele-ratings",mounted:function(){}},s=r,c=t("2877"),u=Object(c["a"])(s,a,i,!1,null,"269cf41d",null);e["default"]=u.exports}}]);
+//# sourceMappingURL=ratings.751ee552.js.map

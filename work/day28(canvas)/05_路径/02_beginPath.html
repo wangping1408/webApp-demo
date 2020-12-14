@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #oc{
+            background: pink;
+            position: absolute;
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<canvas id="oc" width="500" height="500"></canvas>
+</body>
+<script>
+    window.onload=function () {
+        var oc = document.querySelector("#oc");
+        if(oc.getContext){
+            var ctx = oc.getContext("2d");
+            ctx.moveTo(100,100);
+            ctx.lineTo(200,200);
+            ctx.lineTo(200,100);
+            ctx.fill()
+
+            ctx.beginPath(); //清空路径容器
+
+            ctx.lineWidth =10;
+            ctx.strokeStyle="red";
+            ctx.moveTo(200,200);
+            ctx.lineTo(300,300);
+            ctx.lineTo(300,200);
+            ctx.closePath() //闭合路径;闭合最近的一组路径
+            ctx.stroke()
+        }
+    }
+</script>
+</html>

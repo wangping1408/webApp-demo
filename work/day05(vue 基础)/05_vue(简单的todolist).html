@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <!--change:光标离开输入框触发的事件-->
+    <!--input :实时输入时 都会触发input事件-->
+    <div id="app">
+        <input type="text" placeholder="今天要干嘛"
+               v-model="task" v-on:change="fn">
+        <ul>
+            <li v-for="item in listTask">
+                {{item}}
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    //数据驱动的编程思想  任何一个业务逻辑 先思考数据该怎么设计 数据该怎么操作
+    //vscode vue语法提示插件: vue-helper
+    Vue.config.productionTip = false;
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            task:"",
+            listTask:["吃饭","睡觉","跳伞","玩李强"]
+        },
+        methods:{
+            fn(){
+                this.listTask.push(this.task);
+                this.task = "";
+            }
+        }
+    })
+
+</script>
+</html>

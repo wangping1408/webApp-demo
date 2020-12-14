@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #wrap{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .swiper-wrap{
+            position: relative;
+        }
+        .swiper-wrap .swiper-list{
+            width: 500%;
+            overflow: hidden;
+            list-style: none;
+        }
+        .swiper-wrap .swiper-list .swiper-item{
+            width: 20%;
+            float: left;
+        }
+        .swiper-wrap .swiper-list .swiper-item img{
+            width: 100%;
+            display: block;
+        }
+        .swiper-wrap .points-wrap {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+        }
+        .swiper-wrap .points-wrap .points-list{
+            font-size: 0;
+            text-align: center;
+        }
+        .swiper-wrap .points-wrap .points-list .points-item{
+            width: 20px;
+            height: 20px;
+            background: pink;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 3px;
+        }
+        .swiper-wrap .points-wrap .points-list .points-item.active{
+            background: deeppink;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="swiper-wrap">
+            <ul class="swiper-list">
+                <li class="swiper-item">
+                    <img src="./img/1.jpg" alt="">
+                </li>
+                <li class="swiper-item">
+                    <img src="./img/2.jpg" alt="">
+                </li>
+                <li class="swiper-item">
+                    <img src="./img/3.jpg" alt="">
+                </li>
+                <li class="swiper-item">
+                    <img src="./img/4.jpg" alt="">
+                </li>
+                <li class="swiper-item">
+                    <img src="./img/5.jpg" alt="">
+                </li>
+            </ul>
+            <div class="points-wrap">
+                <ul class="points-list">
+                    <li class="points-item active"></li>
+                    <li class="points-item"></li>
+                    <li class="points-item"></li>
+                    <li class="points-item"></li>
+                    <li class="points-item"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    (function () {
+        var wrap = document.querySelector("#wrap");
+        wrap.addEventListener("touchstart",function (ev) {
+            ev = ev||event;
+            ev.preventDefault()
+        })
+    })();
+
+    //rem适配
+    (function () {
+        var layoutW = document.documentElement.clientWidth;
+        var styleNode = document.createElement("style");
+        styleNode.innerHTML = `html{font-size:${layoutW/16}px !important}`
+        document.head.appendChild(styleNode);
+    })()
+
+</script>
+</html>

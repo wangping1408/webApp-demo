@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #oc{
+            background: pink;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="oc" width="400" height="400"></canvas>
+</body>
+<script>
+    window.onload=function () {
+        var oc = document.querySelector("#oc");
+        if(oc.getContext){
+            var ctx = oc.getContext("2d");
+
+            /*ctx.save()
+                ctx.beginPath()
+                ctx.moveTo(100,300)
+                ctx.lineTo(230,200)
+                ctx.lineTo(300,300)
+                ctx.stroke()
+
+                ctx.beginPath()
+                ctx.moveTo(100,300)
+                ctx.quadraticCurveTo(230,200,300,300)
+                ctx.stroke()
+            ctx.restore()*/
+
+            ctx.save()
+            ctx.beginPath()
+            ctx.moveTo(100,50)
+            ctx.lineTo(400,80)
+            ctx.lineTo(0,300)
+            ctx.lineTo(360,380)
+            ctx.stroke()
+
+            ctx.beginPath()
+            ctx.moveTo(100,50)
+            ctx.bezierCurveTo(400,80,0,300,360,380)
+            ctx.stroke()
+            ctx.restore()
+        }
+    }
+</script>
+</html>

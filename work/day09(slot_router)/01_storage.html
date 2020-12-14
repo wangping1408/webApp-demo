@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //localStorage时效是永久的
+    localStorage.setItem('myCat', 'Tom');
+    localStorage.setItem('myDog', 'qhf');
+    localStorage.setItem('myWife', JSON.stringify({name:"冬雨"}));
+    // localStorage.removeItem("myCat")
+    // localStorage.clear()
+    //console.log(localStorage.getItem("myDog"))
+
+
+    // JSON序列化: 将一个对象 转成 其字符串表达格式  {name:"冬雨"} ---> '{name:"冬雨"}'
+    console.log(JSON.stringify({name:"冬雨"}))
+
+    // 反序列化
+    console.log(JSON.parse('{"name":"damu"}'))
+</script>
+</html>

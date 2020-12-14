@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // 1. 执行器函数是一个同步的回调函数!
+    // 2. 所有的Promise实例都具备三个状态: 初始化 成功 失败
+    // 3. promise的状态机制  then方法
+    
+    var p = new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            console.log(1)
+            resolve()
+        },1000)
+    })
+
+    //then方法的两个回调 会有一个在promise的状态发生改变时 被执行
+    p.then(()=>{
+        setTimeout(()=>{
+            console.log(2)
+        },1000)
+     })
+    .then(()=>{
+        setTimeout(()=>{
+            console.log(3)
+        },1000)
+    }).then(()=>{
+        setTimeout(()=>{
+            console.log(4)
+        },1000)
+    })
+</script>
+</html>

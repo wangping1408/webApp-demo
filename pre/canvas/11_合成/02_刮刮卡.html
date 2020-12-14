@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #wrap{
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        #wrap .bzr{
+            width: 100%;
+            height: 100%;
+            background: url("./img/xfz.png") no-repeat;
+            background-size:100% 100% ;
+        }
+        #wrap .top{
+            position: absolute;
+            left: 0;
+            top: 0;
+
+            transition: 2s;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="bzr"></div>
+        <canvas class="top"></canvas>
+    </div>
+</body>
+<script>
+    window.onload=function () {
+        var canvasNode = document.querySelector(".top");
+        canvasNode.width = document.documentElement.clientWidth;
+        canvasNode.height = document.documentElement.clientHeight;
+        if (canvasNode.getContext){
+            var ctx =canvasNode.getContext("2d");
+            var img = new Image();
+            img.src = "./img/a.png";
+            img.onload=function () {
+                draw(this);
+            }
+        }
+
+
+        function draw(img) {
+            ctx.drawImage(img,0,0,document.documentElement.clientWidth,document.documentElement.clientHeight);
+
+            //滑屏
+            /*
+                onmousedown  onmousemove onmouseup
+                    onmousemove可以单独触发
+                ontouchstart ontouchmove ontouchend
+                    ontouchmove 不可能单独触发
+
+                1.拿到手指一开始的位置
+                2.拿到手指移动的距离
+
+            */
+            var flag = 0;
+            var startX=0;
+            var startY=0;
+            document.addEventListener("touchstart",function (ev) {
+                ev = ev || event;
+                // ev.changedTouches 屏幕上的手指列表
+                var sz = ev.changedTouches[0];
+                startX= sz.clientX;
+                startY = sz.clientY;
+
+                ctx.moveTo(startX,startY)
+            })
+            document.addEventListener("touchmove",function (ev) {
+                ev = ev || event;
+                var sz = ev.changedTouches[0];
+                var moveX= sz.clientX;
+                var moveY = sz.clientY;
+
+               /* var disX = moveX - startX;
+                var disY = moveY - startY;*/
+
+                ctx.save()
+                ctx.lineCap="round";
+                ctx.lineJoin="round";
+                ctx.lineWidth=30;
+                ctx.globalCompositeOperation="destination-out";
+                // ctx.beginPath()
+                // ctx.arc(moveX,moveY,10,0,2*Math.PI);
+                ctx.lineTo(moveX,moveY)
+                ctx.stroke();
+                ctx.restore()
+
+
+            })
+            document.addEventListener("touchend",function (ev) {
+                ev = ev || event;
+                var imgData = ctx.getImageData(0,0,document.documentElement.clientWidth,document.documentElement.clientHeight);
+                for(var i=0;i<imgData.data.length;i++){
+                    if(imgData.data[4*i+3] === 0){
+                        flag++;
+                    }
+                }
+
+                if((flag/(imgData.width*imgData.height))>0.5){
+                    canvasNode.style.opacity=0;
+                }
+
+            })
+            canvasNode.addEventListener("transitionend",function () {
+                this.remove();
+            })
+        }
+    }
+</script>
+</html>

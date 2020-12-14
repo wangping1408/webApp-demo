@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <v-damu></v-damu>
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    //根组件的配置项: el template data(可以是对象 也可以是一个返回对象的函数) methods mounted computed watch components
+    //非根组件的配置: template data(必须是一个返回对象的函数) methods  mounted computed watch components
+    Vue.config.productionTip = false;
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            msg:"v-app"
+        },
+        components:{
+            "v-damu":{
+                template:`<span @click='handleC'>
+                    <v-qhf></v-qhf>
+                </span>`,
+                data(){
+                    return {
+                        msg:"v-damu"
+                    }
+                },
+                methods:{
+                    handleC(){
+                        console.log(this.msg)
+                    }
+                },
+                mounted(){
+                    console.log(this.msg)
+                },
+                components:{
+                    "v-qhf":{
+                        template:"<i>qhf</i>"
+                    }
+                }
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    /*
+        作用域链 变量查询的规则
+            右查询(对等号非左边的变量发起查询): 整条作用域链都没有对应变量的声明则报错
+            左查询(对等号左边的变量发起查询)  : 整条作用域链都没有对应变量的声明 会在全局作用域重新声明一份
+        原型链   属性查找的规则
+            如果整体原型链都没有对应属性的声明 则 返回undefined;
+                对象都拥有隐式原型__proto__
+                函数都拥有显示原型prototype
+                对象的隐式原型__proto__指向其构造函数的显示原型prototype
+                原型链的头: Object.prototype.__proto__ === null
+     */
+    console.log(window.a)
+</script>
+</html>

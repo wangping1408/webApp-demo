@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //回调函数 : 函数是你定义的 可是你没调用 最终它执行了
+    // executor : 执行器; 执行器是一个同步的回调函数
+
+    //在new Promise的时候 是先调用执行器 然后再返回实例对象
+    //Promise的实例对象有三个状态 : pending resolved rejected
+
+
+    //现在我们讨论的是 new Promise返回的实例
+    var p = new Promise((resolve, reject)=>{
+        //执行器中 如果都是同步代码  你就是在瞎用promise
+
+        //定时器的执行 是同步的!!!!
+        setTimeout(()=>{
+            //异步代码!!!!!!
+            resolve()
+        },2000)
+    })
+
+
+
+
+</script>
+</html>

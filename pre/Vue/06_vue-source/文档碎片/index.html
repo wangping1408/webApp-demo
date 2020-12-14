@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--浏览器遇到template标签 是不会去选择渲染的-->
+    <template id="app">
+        <img src="./test.png" alt="">
+    </template>
+</body>
+<script>
+    var app = document.querySelector("#app");
+    console.log(app)
+
+    //template 本质上 是一个文档碎片!!!!
+</script>
+</html>

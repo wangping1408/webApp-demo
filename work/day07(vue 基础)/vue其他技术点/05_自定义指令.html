@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-focus>
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.27.0/moment.js"></script>
+<script>
+
+
+    Vue.directive('focus', {
+        inserted: function (el) {
+            el.focus()
+        }
+    })
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            date:new Date()
+        }
+        /*directives:{
+            focus:{
+                //当对应的标签别插入到文档上时被自动调用
+                inserted: function (el) {
+                    console.log(el);
+                    el.focus()
+                }
+            }
+        }*/
+    })
+</script>
+</html>

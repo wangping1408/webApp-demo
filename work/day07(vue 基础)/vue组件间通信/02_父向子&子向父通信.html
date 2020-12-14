@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .count{
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 100px;
+            background: pink;
+            font-size: 30px;
+            color: black;
+        }
+        .fang{
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            background: pink;
+            font-size: 30px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <v-child class="count" :num="num" :add="add"></v-child>
+    <v-damu class="fang" :num="num" :add="add"></v-damu>
+
+</div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+
+    // 最佳实践: 不应该让子组件直接修改父组件的数据!
+
+    /*父向子传递的数据 子组件不能直接修改;
+            要重新复制一份再修改(前提是各个子组件之间对数据没有同步的需求)*/
+    var vm = new Vue({
+        el:"#app",
+        data:{
+          num:0
+        },
+        methods:{
+           add(step){
+               this.num += step
+           }
+        },
+        components:{
+            "v-child":{
+                props:["num","add"],
+                data(){
+                  return {
+                    step : 3
+                  }
+                },
+                template:"<span @click='handleC'>{{num}}</span>",
+                methods:{
+                    handleC(){
+                        this.add(this.step)
+                    }
+                }
+            },
+            "v-damu":{
+                props:["num","add"],
+                template:"<span @click='handleC'>{{num}}</span>",
+                methods:{
+                    handleC(){
+                        this.add(2)
+                    }
+                }
+            },
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+  <div id="app">
+    <v-child :msg="msg123" v-show="true" class="item"></v-child>
+  </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+  var vm = new Vue({
+    el: "#app",
+    data: {
+      msg123: "---"
+    },
+    components: {
+      "v-child": {
+        props: ["msg"],
+        template: "<span>{{msg}}</span>"
+      }
+    }
+  })
+</script>
+
+</html>

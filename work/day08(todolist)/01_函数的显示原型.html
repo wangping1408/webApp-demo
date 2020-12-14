@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // 函数是js中一等公民
+    // 在js中有没有构造函数? 其实本质上来讲是没有定义构造函数的语法
+    // 在js中我们只区分对函数是进行何种调用;如果对函数进行new调用 那当前的这个函数就可以被称为构造函数
+    function test(a) {
+        
+    }
+    console.log(test.prototype) //函数是显示原型都可以认为是一个{}对象
+
+    //前后两种定义对象的方式是一样的 上面是下面的语法糖
+    var obj = {};
+    var obj2 = new Object()
+    
+    //前后两种定义函数的方式是一样的 上面是下面的语法糖
+    function damu(a,b) {
+        return a+b
+    }
+    const damu2 = new Function("a", "b", "return a + b");
+    console.log(damu2(1,2))
+</script>
+</html>

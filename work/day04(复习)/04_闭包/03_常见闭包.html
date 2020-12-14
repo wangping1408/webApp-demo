@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // 当函数可以记住并访问自己的作用域链时就会产生闭包
+    function wrap() {
+        var a = "wrap-a"
+        setTimeout(function () {
+            console.log(a)
+        },2000)
+    }
+    wrap()
+
+</script>
+</html>

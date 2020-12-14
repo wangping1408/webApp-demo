@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #oc{
+            background: pink;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<canvas id="oc" width="400" height="400"></canvas>
+</body>
+<script>
+    window.onload=function () {
+        var oc = document.querySelector("#oc");
+        if(oc.getContext){
+            var ctx = oc.getContext("2d");
+
+            //全局样式
+            ctx.translate(200,200);
+            ctx.rotate(-90*Math.PI/180)
+            ctx.lineWidth = 8;
+            ctx.strokeStyle = "black";
+            ctx.lineCap = "round";
+            move()
+
+            function move() {
+                //画圆盘
+                ctx.save()
+                ctx.strokeStyle="#325FA2"
+                ctx.lineWidth = 14;
+                ctx.beginPath()
+                ctx.arc(0,0,140,0,2*Math.PI,false)
+                ctx.stroke();
+                ctx.restore()
+
+                //画时针刻度
+                for(var i=0;i<12;i++){
+                    ctx.rotate(30*Math.PI/180)
+                    ctx.save()
+                    ctx.beginPath()
+                    ctx.moveTo(97,0)
+                    ctx.lineTo(117,0)
+                    ctx.stroke()
+                    ctx.restore()
+                }
+
+                //画分针刻度
+                for(var i=0;i<60;i++){
+                    ctx.rotate(6*Math.PI/180)
+                    if((i+1)%5 !==0){
+                        ctx.save()
+                        ctx.lineWidth = 4
+                        ctx.beginPath()
+                        ctx.moveTo(114,0)
+                        ctx.lineTo(117,0)
+                        ctx.stroke()
+                        ctx.restore()
+                    }
+                }
+
+                //拿到当前时间
+                var date = new Date()
+                var s = date.getSeconds()
+                var m = date.getMinutes() + s/60;
+                var h = date.getHours() + m/60;
+                h = h>12? (h-12) : h;
+
+
+                //画时针
+                ctx.save()
+                    ctx.lineWidth = 14
+                    ctx.rotate(30*h*Math.PI/180)
+                ctx.beginPath()
+                    ctx.moveTo(-20,0)
+                    ctx.lineTo(80,0)
+                    ctx.stroke()
+                ctx.restore()
+
+                //画分针
+                ctx.save()
+                    ctx.strokeStyle = "green"
+                    ctx.lineWidth = 10
+                    ctx.rotate(6*m*Math.PI/180)
+                ctx.beginPath()
+                    ctx.moveTo(-28,0)
+                    ctx.lineTo(112,0)
+                    ctx.stroke()
+                ctx.restore()
+
+                //画秒针
+                ctx.save()
+                    ctx.strokeStyle = "#D40000"
+                    ctx.lineWidth = 6
+                    ctx.rotate(6*s*Math.PI/180)
+                ctx.beginPath()
+                    ctx.moveTo(-30,0)
+                    ctx.lineTo(83,0)
+                    ctx.stroke()
+                //画秒头
+                    ctx.save
+                    ctx.beginPath()
+                        ctx.arc(96,0,10,0,2*Math.PI)
+                        ctx.stroke()
+                    ctx.restore()
+                ctx.restore()
+
+                //画圆盘
+                ctx.save()
+                ctx.fillStyle = "#D40000"
+                ctx.beginPath()
+                ctx.arc(0,0,10,0,2*Math.PI)
+                ctx.fill()
+                ctx.restore()
+            }
+
+
+            setInterval(()=>{
+                ctx.clearRect(-200,-200,oc.width,oc.height)
+                move()
+            },1000)
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul id="app">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</body>
+<script>
+    //querySelector拿到的是静态列表!
+    var appNode = document.querySelector("#app")
+    var liNodes = appNode.getElementsByTagName("li");
+
+    //发生了一次dom结构的改变!!!!  dom树已经重新排列绘制了
+    appNode.innerHTML += "<li>4</li><li>5</li>";
+    
+    for (var i=0;i<liNodes.length;i++){
+        liNodes[i].style.background="pink";
+    }
+    console.log(liNodes);
+</script>
+</html>

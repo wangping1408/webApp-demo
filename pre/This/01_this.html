@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    /*
+        this指向于谁?  看函数调用位置上的调用形式
+            独立调用( fn() )  --->  this指向window
+            构造调用( new fn() ) ---> this指向当前new调用创建的实例
+            隐式调用( obj.fn() ) ---> this指向调用者
+            显示调用( fn.call(obj) fn.apply(obj)) ---> this指向指定的对象
+
+         坑: 隐式丢失  靠硬绑定来解决
+         注意: 所有的回调函数的this指向 要查阅api!!
+                回调函数:  你定义的 你没调用 最终执行了
+    */
+
+    function test() {
+        console.log(this)
+    }
+    test(1,2,3,4)
+</script>
+</html>

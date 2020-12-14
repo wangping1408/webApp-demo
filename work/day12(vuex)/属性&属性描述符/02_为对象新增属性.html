@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    "use strict"
+    var obj = {
+        name:"damu"
+    }
+
+    Object.defineProperty(obj,"name",{
+        value:"达姆",
+        writable:false,
+        enumerable:true,
+        configurable:false
+    })
+
+    Object.defineProperty(obj,"age",{
+        value:18,
+        writable:false,
+        enumerable:false,
+        configurable:false
+    })
+
+    // delete obj.age
+    // obj.age =88
+    for (let key in obj){
+        console.log(obj[key]);
+    }
+
+</script>
+</html>

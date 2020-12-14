@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <v-damu></v-damu>
+        <v-damu></v-damu>
+    </div>
+    <div id="app2">
+        <v-damu></v-damu>
+        <v-damu></v-damu>
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    //什么是一个组件?  一个自定义的html标签   可以复用大段的html代码
+
+    //vue组件的配置项中不能使用el配置
+    //全局组件
+    Vue.component("v-damu",{
+        template:`<span>1</span>`
+    })
+
+
+    var vm = new Vue({
+        el:"#app"
+    })
+
+    var vm2 = new Vue({
+        el:"#app2"
+    })
+</script>
+</html>

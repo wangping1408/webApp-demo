@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        body{
+            background: pink;
+        }
+        canvas{
+            background: gray;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="400" height="400">
+
+    </canvas>
+</body>
+<script>
+    window.onload=function () {
+        var canvasNode = document.querySelector("canvas");
+        if(canvasNode && canvasNode.getContext) {
+            var ctx = canvasNode.getContext("2d");
+
+            move();
+            function move() {
+                //钟表
+                ctx.save()
+                ctx.translate(200,200);
+                ctx.rotate(-90*Math.PI/180);
+                ctx.lineCap="round";
+                ctx.lineWidth=8;
+                ctx.strokeStyle = "black";
+                ctx.beginPath()
+                //表盘
+                ctx.save()
+                ctx.lineWidth=14;
+                ctx.strokeStyle = "#325FA2";
+                ctx.beginPath()
+                ctx.arc(0,0,140,0,360*Math.PI/180,false);
+                ctx.stroke()
+                ctx.restore()
+
+                //时钟刻度
+                ctx.save()
+                for(var i=0;i<12;i++){
+                    ctx.rotate(30*Math.PI/180)  //累加的！！！
+                    ctx.beginPath()
+                    ctx.moveTo(100,0)
+                    ctx.lineTo(120,0)
+                    ctx.stroke()
+                }
+                ctx.restore()
+
+                //分钟刻度
+                ctx.save()
+                ctx.lineWidth=4;
+                for(var i=0;i<59;i++){
+                    ctx.rotate(6*Math.PI/180)  //累加的！！！
+                    if((i+1)%5 !==0){
+                        ctx.beginPath()
+                        ctx.moveTo(117,0)
+                        ctx.lineTo(120,0)
+                        ctx.stroke()
+                    }
+                }
+                ctx.restore()
+
+                var date = new Date();
+                var s = date.getSeconds();
+                var m = date.getMinutes() + s/60;
+                var h = date.getHours() + m/60;
+                h = h > 12 ? (h-12):h;
+
+
+                //时针
+                ctx.save()
+                ctx.rotate(h*30*Math.PI/180)
+                ctx.lineWidth=14;
+                ctx.beginPath()
+                ctx.moveTo(-20,0);
+                ctx.lineTo(80,0);
+                ctx.stroke()
+                ctx.restore()
+
+                //分针
+                ctx.save()
+                ctx.rotate(m*6*Math.PI/180)
+                ctx.lineWidth=10;
+                ctx.beginPath()
+                ctx.moveTo(-28,0);
+                ctx.lineTo(112,0);
+                ctx.stroke()
+                ctx.restore()
+
+                //秒针
+                ctx.save()
+                ctx.rotate(s*6*Math.PI/180)
+                ctx.strokeStyle="#D40000";
+                ctx.lineWidth=6;
+                ctx.beginPath()
+                ctx.moveTo(-30,0);
+                ctx.lineTo(83,0);
+                ctx.stroke()
+                //秒针头
+                ctx.beginPath()
+                ctx.arc(96,0,10,0,2*Math.PI);
+                ctx.stroke()
+                ctx.restore()
+
+                //表座
+                ctx.save()
+                ctx.fillStyle="red";
+                ctx.beginPath();
+                ctx.arc(0,0,10,0,2*Math.PI)
+                ctx.fill();
+                ctx.restore()
+                ctx.restore()
+            }
+
+            setInterval(function () {
+                ctx.clearRect(0,0,canvasNode.width,canvasNode.height)
+                move();
+            },1000)
+        }
+    }
+</script>
+</html>

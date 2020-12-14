@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var obj = {
+        name:"damu"
+    }
+    var res = Object.getOwnPropertyDescriptor(obj,"name")
+    console.log(res);
+
+    // configurable: true   决定了这个属性能否被重新配置(能否被删除 能否被重新定义)
+    // enumerable: true     决定了这个属性是否可枚举(能否出现在对象的for in循环中)
+    // value: "damu"
+    // writable: true       决定了这个属性是否可写
+</script>
+</html>

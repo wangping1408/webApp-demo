@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // 1. 执行器函数是一个同步的回调函数!
+    // 2. 所有的Promise实例都具备三个状态: 初始化 成功 失败
+
+    var p = new Promise((resolve,reject)=>{
+        //执行器中如果写同步代码 那就是在瞎用promise
+        //执行器中一定要编写异步代码 而且要保证返回的promsie实例的状态是异步确定
+        setTimeout(()=>{
+            resolve()
+        },3000)
+    })
+
+    console.log(p)
+</script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var obj = {
+        name:"damu",
+        wrap:function() {
+            var that = this;
+            function inner() {
+                console.log(this);
+                console.log(that.name + "❤ zdy")
+            }
+            inner()
+        }
+    }
+
+    obj.wrap()
+
+</script>
+</html>

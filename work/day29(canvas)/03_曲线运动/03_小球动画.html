@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background: gray;
+        }
+        #oc{
+            background: white;
+            position: absolute;
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
+            margin: auto;
+
+        }
+    </style>
+</head>
+<body>
+<canvas id="oc" ></canvas>
+</body>
+<script>
+    window.onload=function () {
+        var oc = document.querySelector("#oc");
+        oc.width = document.documentElement.clientWidth;
+        oc.height = document.documentElement.clientHeight;
+        if(oc.getContext){
+            var ctx = oc.getContext("2d");
+
+            //存放所有随机圆的信息
+            var arr = [];
+
+            //绘制圆
+            setInterval(()=>{
+                //清画布
+                ctx.clearRect(0,0,oc.width,oc.height)
+
+
+                //让半径 和 透明度 产生变化
+                //item : 一个个圆
+                arr.forEach((item,index)=>{
+                    item.deg+=3;
+                    item.x = item.startX + Math.sin(item.deg*Math.PI/180)*item.stepY;
+                    item.y = item.startY - (item.deg*Math.PI/180)*item.stepX ;
+
+                    if(item.y < -item.r){
+                        arr.splice(index,1)
+                    }
+                })
+
+
+
+                arr.forEach((item)=>{
+                    ctx.save()
+                    ctx.fillStyle=`rgba(${item.red},${item.green},${item.blue},${item.a})`
+                    ctx.beginPath()
+                    ctx.arc(item.x,item.y,item.r,0,2*Math.PI);
+                    ctx.fill()
+                    ctx.restore()
+                })
+
+            },10)
+
+
+            //提供随机圆的信息
+            setInterval(()=>{
+                //x,y 代表圆心的位置(随机)
+                //r   代表圆的半径(固定)
+                //red,green,blue 代表圆的颜色(随机)
+                //a 代表透明度(固定)
+                //startX startY : 圆的初始位置
+                //deg : 度数
+                //stepX stepY : 系数
+                var r = Math.round(Math.random()*10) + 5 ; // 当前值介于[5,15]
+                var x = Math.round(Math.random()*oc.width)    // 当前值介于[0,oc.width]之间
+                var y = oc.height - r;
+                var red = Math.round(Math.random()*255) // 当前值介于[0,255]之间
+                var green = Math.round(Math.random()*255) // 当前值介于[0,255]之间
+                var blue = Math.round(Math.random()*255) // 当前值介于[0,255]之间
+                var a = 1;
+
+                var startX = x;
+                var startY = y;
+                var deg =0;
+                var stepX = Math.round(Math.random()*30) + 20; // [20-50]
+                var stepY = Math.round(Math.random()*30) + 20;
+                arr.push({
+                    x,
+                    y,
+                    r,
+                    red,
+                    green,
+                    blue,
+                    a,
+
+                    startX,
+                    startY,
+                    deg,
+                    stepX,
+                    stepY
+                })
+            },100)
+        }
+    }
+</script>
+</html>

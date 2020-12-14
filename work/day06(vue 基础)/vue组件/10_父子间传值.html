@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .red{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <v-damu :msg="msg" @click="handleC"></v-damu>
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+          msg:"msg from app"
+        },
+        methods:{
+            handleC(msg){
+                console.log(msg)
+            }
+        },
+        components:{
+            "v-damu":{
+                template:"<span @click='handleC'>{{msg}}</span>",
+                props:["msg"],
+                data(){
+                    return {
+                        msgFromDamu:"msg from v-damu"
+                    }
+                },
+                methods:{
+                    handleC(){
+                        this.$emit("click",this.msgFromDamu)
+                    }
+                }
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="inText">
+        <ul>
+            <li v-for="item in filterList">
+                {{item.name}} / {{item.wife}} / {{item.age}}
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            inText:"",
+            list:[
+                {name:"达姆",wife:"冬雨",age:35},
+                {name:"李强",wife:"刘渊",age:16},
+                {name:"海峰",wife:"立超",age:38},
+                {name:"忠国",wife:"张弛",age:14},
+                {name:"小乐",wife:"随便",age:8}
+            ]
+        },
+        computed:{
+            filterList(){
+                return this.list.filter((item,index,arr)=>{
+                    return item.name.includes(this.inText)
+                })
+            }
+        }
+    })
+</script>
+</html>

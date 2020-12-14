@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--v-bind使用在一些之前不归vue解析 现在需要vue解析的一些标签属性上-->
+    <div id="app">
+        <button @click="flag=!flag">点我啊</button>
+        <span v-show="flag">
+            好好学习 天天向上
+        </span>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    //以后函数要定义在methods中 不要写在data中
+    Vue.config.productionTip = false;
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            flag:true
+        }
+    })
+
+</script>
+</html>

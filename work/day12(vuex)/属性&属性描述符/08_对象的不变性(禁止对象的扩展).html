@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //冻结对象
+    var obj = {
+        name:"damu"
+    }
+    Object.defineProperty(obj,"name",{
+        value:"damu",
+        configurable:false,
+        writable:false,
+        enumerable:true
+    })
+    Object.preventExtensions(obj);
+
+    obj.name="渣男"
+    obj.age=18;
+    console.log(obj);
+</script>
+</html>

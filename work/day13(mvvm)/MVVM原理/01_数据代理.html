@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+    </div>
+</body>
+<script src="./MVVM/compile.js"></script>
+<script src="./MVVM/mvvm.js"></script>
+<script src="./MVVM/observer.js"></script>
+<script src="./MVVM/watcher.js"></script>
+<script>
+    var vm = new MVVM({
+        el:"#app",
+        data:{
+            msg:"test",
+            msg2:"test2"
+        }
+    })
+
+
+    //数据代理
+    console.log(vm.msg) //对应一套get set方法 得到了一个闭包key 这个值为msg
+    console.log(vm.msg2)//对应一套get set方法  得到了一个闭包key  这个值为msg2
+</script>
+</html>

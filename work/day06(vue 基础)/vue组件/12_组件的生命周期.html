@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        <v-damu></v-damu>
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    Vue.config.productionTip = false;
+
+    Vue.component("v-damu",{
+        template:`<span>1</span>`,
+        beforeCreate(){console.log("beforeCreate - damu")},
+        created(){console.log("created- damu")},
+        beforeMount(){ console.log("beforeMount- damu")},
+        mounted(){console.log("mounted- damu")},
+        beforeUpdate(){console.log("beforeUpdate- damu")},
+        updated(){console.log("updated- damu")},
+        beforeDestroy(){console.log("beforeDestroy- damu")},
+        destroyed(){console.log("destroyed- damu")},
+    })
+
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            msg:"xxx"
+        },
+        beforeCreate(){console.log("beforeCreate - app")},
+        created(){console.log("created- app")},
+        beforeMount(){ console.log("beforeMount- app")},
+        mounted(){console.log("mounted- app")},
+        beforeUpdate(){console.log("beforeUpdate- app")},
+        updated(){console.log("updated- app")},
+        beforeDestroy(){console.log("beforeDestroy- app")},
+        destroyed(){console.log("destroyed- app")},
+    })
+</script>
+</html>

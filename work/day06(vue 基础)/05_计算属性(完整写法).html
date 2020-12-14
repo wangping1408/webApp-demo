@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <span>姓:</span><input type="text" v-model="firstName">
+        <span>名:</span><input type="text" v-model="lastName">
+        <span>姓名:</span><input type="text" v-model="fullName">
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            firstName:"T",
+            lastName:"Mac"
+        },
+        computed:{
+            //语法糖
+            /*fullName(){
+                return `${this.firstName}-${this.lastName}`
+            }*/
+            fullName:{
+                // 1. 页面初始化的时候 不管计算属性被使用了多少次 但计算属性对应的get方法只会被调用一次
+                // 2. 当计算属性的依赖发生改变时 计算属性也会被重新执行一次
+                get:function () {
+                    console.log("get")
+                    return `${this.firstName}-${this.lastName}`
+                },
+                set:function (val) {
+                    // val:改完后的值
+                    var arr = val.split("-");
+                    this.firstName = arr[0];
+                    this.lastName = arr[1];
+                }
+            }
+        }
+    })
+</script>
+</html>

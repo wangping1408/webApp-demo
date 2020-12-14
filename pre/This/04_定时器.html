@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+
+   // 隐式丢失
+   var damu ={
+       name:"达姆",
+       wife:"周冬雨",
+       son:"老刘",
+       putoutWifeName:function () {
+           console.log(this.wife)
+       }
+   }
+
+   //硬绑定
+   setTimeout(damu.putoutWifeName.bind(damu),2000)
+
+</script>
+</html>

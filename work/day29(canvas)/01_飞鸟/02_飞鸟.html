@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="oc"></canvas>
+</body>
+<script>
+    window.onload=function () {
+        var oc = document.querySelector("#oc");
+        oc.width = document.documentElement.clientWidth;
+        oc.height = document.documentElement.clientHeight;
+        if(oc.getContext){
+            var ctx = oc.getContext("2d");
+
+            var index = 0;
+            var x = 0;
+            setInterval(()=>{
+                x+=10;
+                index++;
+                if(index === 9){
+                    index = 1;
+                }
+                //加载一张图片到画布上
+                var imgObj = new Image();
+                imgObj.src = `./img/q_r${index}.jpg`
+                imgObj.onload = function () {
+                    drawImage(this,x)
+                }
+            },100)
+        }
+
+
+        function drawImage(img,x){
+            ctx.clearRect(0,0,oc.width,oc.height)
+            ctx.drawImage(img,x,0)
+        }
+    }
+</script>
+</html>

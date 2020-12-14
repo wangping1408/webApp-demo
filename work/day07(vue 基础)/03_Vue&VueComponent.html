@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <v-child></v-child>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+   /*
+            对象的隐式原型 指向 其构造函数的显示原型
+            所有的显示原型 : new Object()
+            原型链的头:Object.prototype.__proto__ --> null
+            原型链:隐式原型链
+
+            在vue内部有这样的一段代码
+            VueComponent.prototype = Object.create(Vue.prototype)
+            VueComponent.prototype.__proto__ = Vue.prototype ($on,$emit)
+
+
+                                                       组件对象
+            new VueComponent().__proto__        -->  VueComponent.prototype
+            VueComponent.prototype.__proto__    -->  Vue.prototype
+            Vue.prototype.__proto__             -->  Object.prototype
+            Object.prototype.__proto__          -->  null
+   */
+
+
+    var vm = new Vue({
+        el:"#app",
+        mounted(){
+            console.log(this,1) //Vue的实例对象
+        },
+        components:{
+            "v-child":{
+                template:"<span>msg</span>",
+                mounted(){
+                    console.log(this,2) //VueComponent的实例对象
+                }
+            }
+        }
+    })
+</script>
+</html>

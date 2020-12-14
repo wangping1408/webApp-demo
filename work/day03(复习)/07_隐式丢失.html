@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+
+    var obj ={
+        name:"damu",
+        marry:function () {
+            console.log(this.name + "❤ 周冬雨")
+        }
+    }
+
+    // setTimeout(obj.marry,2000)
+
+    //硬绑定函数
+    setTimeout(obj.marry.bind(obj),2000)
+
+
+    // 所有回调函数的this指向都要查阅官方文档
+   /* setTimeout(function () {
+        console.log(this)
+    },1000)*/
+
+
+
+</script>
+</html>

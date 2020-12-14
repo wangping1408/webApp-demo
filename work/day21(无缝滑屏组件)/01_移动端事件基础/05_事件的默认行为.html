@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Title</title>
+    <style>
+        #wrap{
+            width: 200px;
+            height: 200px;
+            background: pink;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        #inner{
+            width: 100px;
+            height: 100px;
+            background: gray;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="inner"></div>
+    </div>
+</body>
+<script>
+    window.onload=function () {
+        document.oncontextmenu=function (ev) {
+            console.log("document");
+            ev.preventDefault();
+        }
+
+        var wrap = document.querySelector("#wrap");
+        wrap.oncontextmenu=function () {
+            console.log("wrap")
+        }
+
+        var inner = document.querySelector("#inner");
+        inner.oncontextmenu=function (ev) {
+            console.log("inner")
+            ev.stopPropagation()
+        }
+    }
+</script>
+</html>

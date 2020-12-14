@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--v-bind使用在一些之前不归vue解析 现在需要vue解析的一些标签属性上-->
+    <div id="app">
+        <div v-pre>
+            <!--大量的静态标签;不需要vue来渲染的-->
+            {{msg}}
+        </div>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    Vue.config.productionTip = false;
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            msg:"xxx"
+        }
+    })
+</script>
+</html>

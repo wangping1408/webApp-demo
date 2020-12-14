@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+  <div id="app">
+    <div ref="damu">damu</div>
+    <v-damu ref="vDamu"></v-damu>
+  </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+  var vm = new Vue({
+    el: "#app",
+    components: {
+      "v-damu": {
+        template: "<strong>v-damu</strong>"
+      }
+    },
+    mounted() {
+      console.log(this.$refs.vDamu)
+    }
+  })
+</script>
+
+</html>

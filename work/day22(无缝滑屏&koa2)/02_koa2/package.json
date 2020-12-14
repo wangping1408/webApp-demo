@@ -1,0 +1,16 @@
+{
+  "name": "02_koa2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "01_简单的服务器(原生).js",
+  "dependencies": {
+    "koa": "^2.13.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #oc{
+            background: pink;
+            position: absolute;
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="oc" width="500" height="500"></canvas>
+</body>
+<script>
+    window.onload=function () {
+        var oc = document.querySelector("#oc");
+        if(oc.getContext){
+            var ctx = oc.getContext("2d");
+            var imgObj = new Image();
+            imgObj.src="./img/xfz.png";
+            imgObj.onload=function () {
+                //当前图片加载完毕
+                // console.log(this.width);
+                // console.log(this.height);
+                ctx.drawImage(this,0,0,oc.width,oc.height)
+            }
+        }
+    }
+</script>
+</html>

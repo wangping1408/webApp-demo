@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <!--1. 把click解析成vue的自定义事件(事件名叫click) 对应的回调是app.handleC
+        2. 找到v-damu的template 发现也有@click 会把span上的@click
+                解析成dom事件 对应的回调是v-damu.handleC
+        3. v-damu的template 把 v-damu这个标签覆盖掉
+        4. 用户点击界面上的span 触发span的click事件
+        5. v-damu.handleC被放入队列 并 执行
+        6. 触发了v-damu的click事件
+        7. app.handleC被放入队列 并 执行-->
+        <v-damu @click="handleC"></v-damu>
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    Vue.component("v-damu",{
+        template:"<span @click='handleC'>v-damu</span>",
+        methods:{
+            handleC(){
+                this.$emit("click")
+            }
+        }
+    })
+
+    var vm = new Vue({
+        el:"#app",
+        methods:{
+            handleC(){
+                console.log("fn from app")
+            }
+        },
+    })
+</script>
+</html>

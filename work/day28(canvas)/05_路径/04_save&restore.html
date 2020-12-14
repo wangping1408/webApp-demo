@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #oc{
+            background: pink;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="oc" width="400" height="400"></canvas>
+</body>
+<script>
+    window.onload=function () {
+        var oc = document.querySelector("#oc");
+        if(oc.getContext){
+            var ctx = oc.getContext("2d");
+
+            ctx.save() //将当前画笔的状态存储到一个栈内
+                ctx.lineWidth=5;
+                ctx.strokeStyle="red";
+            ctx.beginPath()
+                ctx.moveTo(100,100);
+                ctx.lineTo(200,200);
+                ctx.stroke()
+            ctx.restore()
+
+
+
+            ctx.save()
+            //控制画笔状态的代码
+                ctx.lineWidth=10;
+                ctx.strokeStyle="deeppink"
+            ctx.beginPath()
+            //指定路径 进行填充或描边
+                ctx.moveTo(150,150)
+                ctx.lineTo(200,200)
+                ctx.lineTo(320,360)
+                ctx.stroke()
+            ctx.restore()
+        }
+    }
+</script>
+</html>

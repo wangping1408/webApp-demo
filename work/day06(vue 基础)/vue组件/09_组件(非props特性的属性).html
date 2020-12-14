@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .red{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!--当模板在覆盖对应的组件标签时 会继承一些属性 非props特性的属性胡继承下来-->
+        <!--组件标签上的属性分三拨  props特性 指令 非props特性-->
+        <!--非props特性的属性会被继承  props特性的属性会被传递-->
+        <v-damu class='red'  damu="达姆" v-show="true"></v-damu>
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    Vue.component("v-damu",{
+        props:["damu"],
+        template:"<span>{{damu}}</span>",
+    })
+
+    var vm = new Vue({
+        el:"#app"
+    })
+</script>
+</html>

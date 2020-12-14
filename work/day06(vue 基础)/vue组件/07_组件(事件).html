@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <!--组件本质是就是一个vue实例-->
+        <!--v-on: 如果出现在普通的html标签上 是为当前的这个html标签 绑定dom事件-->
+        <!--v-on: 如果出现在组件标签上 是为当前的这个组件 绑定vue自定义事件-->
+        <!--v-damu.$on("damu",fn)-->
+        <v-damu @damu="fnFromApp"></v-damu>
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    Vue.component("v-damu",{
+        template:"<span @click='fnFormDamu'>v-damu</span>",
+        methods:{
+            fnFormDamu(){
+                this.$emit("damu")
+            }
+        }
+    })
+    var vm = new Vue({
+        el:"#app",
+        methods:{
+            fnFromApp(){
+                console.log("fn from app")
+            }
+        },
+    })
+</script>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <v-a ></v-a>
+    <br>
+    <v-b ></v-b>
+</div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/pubsub-js/1.8.0/pubsub.js"></script>
+<script src="../js/vue.js"></script>
+<script>
+    Vue.config.productionTip = false;
+    var vm = new Vue({
+        el:"#app",
+        components:{
+            "v-a":{
+                data(){
+                  return {
+                    msg : "msg from v-a"
+                  }
+                },
+                template:"<span @click='handleC'>{{msg}}</span>",
+                methods:{
+                    handleC(){
+                        //this.$bus.$emit("change",this.msg)
+                        PubSub.publish("change",this.msg)
+                    }
+                }
+            },
+            "v-b":{
+                data(){
+                    return {
+                        msg : "msg from v-b"
+                    }
+                },
+                template:"<span>{{msg}}</span>",
+                mounted(){
+                    /*this.$bus.$on("change",(msg)=>{
+                        this.msg = msg;
+                    })*/
+                    PubSub.subscribe("change",  (name, msg) => {
+                        this.msg = msg
+                    })
+                }
+            }
+        }
+    })
+</script>
+</html>

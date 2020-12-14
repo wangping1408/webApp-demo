@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--
+        回调分两种:
+            异步回调 是要被放进队列的
+                定时器的回调就是一个异步回调
+            同步回调 是不会被放进队列的
+                数组api中回调都是同步回调
+    -->
+</head>
+<body>
+
+</body>
+<script>
+
+    var arr = ["a","b","c"]
+    arr.forEach((item)=>{
+        console.log(item)
+    })
+    console.log("-----")
+
+</script>
+</html>

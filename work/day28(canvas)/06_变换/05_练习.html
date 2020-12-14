@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #oc{
+            background: pink;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<canvas id="oc" width="400" height="400"></canvas>
+</body>
+<script>
+    window.onload=function () {
+        var oc = document.querySelector("#oc");
+        if(oc.getContext){
+            var ctx = oc.getContext("2d");
+
+            ctx.translate(200,200) //全局的改动
+            ctx.save()
+            ctx.beginPath()
+                ctx.fillRect(-50,-50,100,100)
+            ctx.restore()
+
+
+            var deg = 0;
+            var flag =0;
+            var scaleFlag = 100;
+            setInterval(()=>{
+                //将上一次的图案清除
+                ctx.clearRect(-200,-200,oc.width,oc.height)
+                deg++
+
+                //可以保证scaleFlag处于[0,100]
+                scaleFlag += flag;
+                if (scaleFlag === 100){
+                    flag =-1;
+                } else if(scaleFlag ===0){
+                    flag =1;
+                }
+
+
+                ctx.save()
+                    ctx.rotate(deg*Math.PI/180)
+                    ctx.scale(scaleFlag/50,scaleFlag/50)  //scaleFlag: 0 - 100
+                ctx.beginPath()
+                    ctx.fillRect(-50,-50,100,100)
+                ctx.restore()
+            },10)
+
+        }
+    }
+</script>
+</html>

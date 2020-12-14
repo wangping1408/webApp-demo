@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <v-child>
+        <template #a>
+            <i>111111</i>
+        </template>
+        <template #b>
+            <i>222222</i>
+        </template>
+        <template>
+            <i>333</i>
+            <i>444</i>
+        </template>
+        <template>
+            <i>555</i>
+            <i>666</i>
+        </template>
+    </v-child>
+</div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        components:{
+            "v-child":{
+                template:`<div>
+                            <span>xxxx</span>
+                            <slot name="a"></slot>
+                            <slot name="b"></slot>
+                            <slot></slot>
+                          </div>`
+            }
+        }
+    })
+</script>
+</html>

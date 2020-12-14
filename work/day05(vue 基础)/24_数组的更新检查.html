@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .list{
+            width:500px;
+            display: flex;
+        }
+        .list span{
+            flex: 1;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li class="list" v-for="(item,index) in list">
+                <span>{{index}}</span>
+                <span>{{item.name}}</span>
+                <span>{{item.age}}</span>
+                <span>{{item.wife}}</span>
+                <span>
+                    <button @click="delFn(index)">del</button>
+                    <button @click="updateFn(index)">update</button>
+                </span>
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            list:[
+                {name:"damu",wife:"冬雨",age:18},
+                {name:"李强",wife:"刘渊",age:38},
+                {name:"海峰",wife:"立超",age:48},
+                {name:"忠国",wife:"张弛",age:58},
+                {name:"小乐",wife:"随便",age:68}
+            ]
+        },
+        methods:{
+            delFn(index){
+                /*
+                    1. 搞懂这个api是干嘛的
+                    2. 搞懂这个api的参数
+                    3. 搞个这个api的返回值
+                    4. 记录当前这个api会不会影响原数组
+                */
+                this.list.splice(index,1)
+            },
+            updateFn(index){
+               /* this.list[index].name = "xxx";
+                this.list[index].age = 1;
+                this.list[index].wife = "yyy";*/
+
+                /*this.list[index] = {
+                    name:"xxx",
+                    age:1,
+                    wife:"yyy"
+                }*/
+                this.list.splice(index,1,{
+                    name:"xxx",
+                    age:1,
+                    wife:"yyy"
+                })
+
+            }
+        }
+    })
+</script>
+</html>

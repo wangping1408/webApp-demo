@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var reg = /\{\{(\d)(.*)\}\}/;
+    var str = "{{9damu.wife.name}}"
+    console.log(reg.test(str));
+    console.log(RegExp.$1)
+    console.log(RegExp.$2)
+</script>
+</html>

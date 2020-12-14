@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="handleC">click</button>
+        <button @click="handleCForClear">clear</button>
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    Vue.config.productionTip = false;
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            msg:"lalalalalalalala"
+        },
+        mounted(){
+          this.$on("damu",(val)=>{
+              console.log("damu",val)
+          })
+        },
+        methods:{
+            handleC(){
+                this.$emit("damu",1)
+            },
+            handleCForClear(){
+                this.$off("damu")
+            }
+        }
+    })
+</script>
+</html>

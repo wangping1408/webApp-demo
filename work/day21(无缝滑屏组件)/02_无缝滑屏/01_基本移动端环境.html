@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #wrap{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+
+    </div>
+</body>
+<script>
+    /*
+        1. 加入viewport标签
+        2. 阻止全局事件的默认行为
+        3. 挑选一个适配方案 (也可以采用流体布局)
+            viewport & 百分比
+            rem & 百分比
+    */
+    (function () {
+        var wrap = document.querySelector("#wrap");
+        wrap.addEventListener("touchstart",function (ev) {
+            ev = ev||event;
+            ev.preventDefault()
+        })
+    })();
+
+    //rem适配
+    (function () {
+        var layoutW = document.documentElement.clientWidth;
+        var styleNode = document.createElement("style");
+        styleNode.innerHTML = `html{font-size:${layoutW/16}px !important}`
+        document.head.appendChild(styleNode);
+    })()
+
+</script>
+</html>

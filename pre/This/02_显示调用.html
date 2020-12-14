@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    /*call
+    apply
+    bind*/
+
+    function Product(name, price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    function Food(arr) {
+        // Product.call(this, name, price);
+        Product.apply(this, arr);
+        this.category = 'food';
+    }
+
+    var damu = new Food(['达姆', 50])
+
+    console.log(damu);
+</script>
+</html>

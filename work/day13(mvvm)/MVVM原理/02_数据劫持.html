@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        {{damu.damuWife.wifeSon.sonName}}
+    </div>
+</body>
+<script src="./MVVM/compile.js"></script>
+<script src="./MVVM/mvvm.js"></script>
+<script src="./MVVM/observer.js"></script>
+<script src="./MVVM/watcher.js"></script>
+<script>
+
+    // 1. 数据劫持的顺序
+    //     damuName damuAge wifeName wifeAge sonName sonAge wifeSon damuWife damu a b
+
+    //2. dep的分配顺序
+    //     damu damuName damuAge  damuWife wifeName wifeAge wifeSon sonName sonAge a b
+
+    //数据劫持的本质 是将data中的属性 一个个拿出来进行重新定义
+    //做完数据劫持之后 每一个key 都对应了一组闭包(dep val) 当我访问data中数据时 放回的是key对应的val
+
+    var vm = new MVVM({
+        el:"#app",
+        data:{
+            damu:{
+                damuName:"达姆",
+                damuAge:18,
+                damuWife:{
+                    wifeName:"冬雨",
+                    wifeAge:19,
+                    wifeSon:{
+                        sonName:"邱海峰",
+                        sonAge:20,
+                    }
+                }
+            },
+            a:"a",
+            b:"b"
+        }
+    })
+
+    console.log(vm.a)
+</script>
+</html>

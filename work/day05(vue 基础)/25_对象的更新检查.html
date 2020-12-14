@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .list{
+            width:500px;
+            display: flex;
+        }
+        .list span{
+            flex: 1;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li class="list" v-for="(val,key,index) in obj">
+                <span>{{index}}</span>
+                <span>{{key}}</span>
+                <span>{{val}}</span>
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data: {
+            obj: {
+                name: "damu",
+                wife: "18岁的周冬雨",
+                age: 18,
+                // son:""
+            }
+        },
+        mounted(){
+            setTimeout(()=>{
+                this.$set(this.obj,"son","小小达姆")
+                // Vue.set(this.obj,"son","小达姆")
+                // this.obj.son = "小达姆"
+            },2000)
+        }
+    })
+</script>
+</html>

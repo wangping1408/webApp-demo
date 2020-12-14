@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var p = new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            console.log(1)
+            resolve()
+        },1000)
+    })
+    //then方法的两个回调 会有一个在promise的状态发生改变时 被执行
+    p.then(()=>{
+        throw new Error("第一步出错")
+        return new Promise((resolve, reject)=>{
+            setTimeout(()=>{
+                console.log(2)
+                resolve()
+            },1000)
+        })
+     })
+    .then(()=>{
+        return new Promise((resolve, reject)=>{
+            setTimeout(()=>{
+                console.log(3)
+                resolve()
+            },1000)
+        })
+    }).then(()=>{
+        return new Promise((resolve, reject)=>{
+            setTimeout(()=>{
+                console.log(4)
+                resolve()
+            },1000)
+        })
+    }).catch((error)=>{
+        console.dir(error);
+    })
+
+
+       /* .then(null,(error)=>{
+            console.dir(error);
+        })*/
+</script>
+</html>

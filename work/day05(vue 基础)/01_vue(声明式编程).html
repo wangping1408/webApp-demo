@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}  <!--插值表达式-->
+    </div>
+</body>
+<!--在全局就会多一个函数 Vue-->
+<script src="./js/vue.js"></script>
+<script>
+    /* vue的三大特征
+        1. 声明式编程
+        2. 响应式数据
+        3. 数据双向绑定
+    */
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            msg:"hello vue"
+        }
+    })
+
+</script>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        body{
+            background: pink;
+        }
+        canvas{
+            background: gray;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<canvas width="600" height="600">
+
+</canvas>
+</body>
+<script>
+    window.onload=function () {
+        var canvasNode = document.querySelector("canvas");
+        if(canvasNode && canvasNode.getContext){
+            var ctx = canvasNode.getContext("2d");
+
+            ctx.save();
+            ctx.strokeStyle="pink";
+            ctx.lineWidth=20;
+            ctx.lineJoin="round";
+            ctx.lineCap="round";
+            ctx.fillStyle="hotpink";
+
+            ctx.beginPath()
+            ctx.moveTo(100,100);
+            ctx.lineTo(200,200);
+            ctx.lineTo(200,100);
+            ctx.fill();
+            ctx.restore()
+
+
+
+            ctx.save()
+            ctx.beginPath()
+            ctx.moveTo(200,200);
+            ctx.lineTo(300,300);
+            ctx.lineTo(300,200);
+            ctx.fill()
+            ctx.restore();
+
+
+            ctx.save()
+            //路径无关  样式 变换....
+            ctx.beginPath()
+            //路径相关
+            //填充  描边
+            ctx.restore()
+        }
+    }
+</script>
+</html>

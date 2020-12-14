@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        body{
+            background: pink;
+        }
+        #bu{
+            background: white;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<canvas id="bu" width="600" height="600"></canvas>
+</body>
+<script>
+    window.onload=function () {
+        var bu = document.querySelector("#bu");
+        if(bu.getContext){
+            var ctx = bu.getContext("2d");
+
+            bu.onmousedown=function (ev) {
+                ev = ev||event;
+                if(bu.setCapture){
+                    bu.setCapture()
+                }
+
+                ctx.moveTo(ev.clientX - this.getBoundingClientRect().left , ev.clientY -this.getBoundingClientRect().top )
+
+                // 每隔100ms 触发一次
+                document.onmousemove=function (ev) {
+                    ev = ev||event;
+                    ctx.lineTo(ev.clientX - bu.getBoundingClientRect().left , ev.clientY -bu.getBoundingClientRect().top)
+                    ctx.stroke();
+                }
+
+                document.onmouseup=function () {
+                    document.onmouseup = document.onmousemove =null;
+                    if(document.releaseCapture){
+                        document.releaseCapture();
+                    }
+                    ctx.beginPath();
+                }
+                return false;
+            }
+
+
+
+        }
+
+
+    }
+</script>
+</html>

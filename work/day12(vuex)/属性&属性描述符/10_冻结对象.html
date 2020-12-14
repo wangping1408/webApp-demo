@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var obj = {
+        name:'damu',
+        age:18,
+        wife:"dy",
+        son:"qhf"
+    }
+
+    //相当于在禁止对象扩展的前提 将原有的属性统一拿出来将其configurable改为了false
+    Object.freeze(obj);
+
+    obj.son2 = "qhf2"
+    delete obj.age ;
+    obj.age =19
+    console.log(obj);
+</script>
+</html>

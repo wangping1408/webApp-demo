@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>swiper</title>
+    <link rel="stylesheet" href="./css/swiper.css">
+</head>
+<body>
+    <div id="wrap">
+        <div class="swiper-wrap">
+            <div class="points-wrap"></div>
+        </div>
+    </div>
+</body>
+<script src="./js/swiper.js"></script>
+<script>
+    //禁止全局的事件的默认行为
+    (function () {
+        var wrap = document.querySelector("#wrap");
+        wrap.addEventListener("touchstart",function (ev) {
+            ev = ev||event;
+            ev.preventDefault()
+        })
+    })();
+    //rem适配
+    (function () {
+        var layoutW = document.documentElement.clientWidth;
+        var styleNode = document.createElement("style");
+        styleNode.innerHTML = `html{font-size:${layoutW/16}px !important}`
+        document.head.appendChild(styleNode);
+    })();
+
+    //swiper的逻辑
+    var imgArrs = ["./img/1.jpg",
+        "./img/2.jpg","./img/3.jpg",
+        "./img/4.jpg","./img/5.jpg"]
+    $.layout(imgArrs)
+
+</script>
+
+</html>

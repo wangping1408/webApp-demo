@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        body{
+            background: gray;
+        }
+        canvas{
+            background: white;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="400" height="400">
+
+    </canvas>
+</body>
+<script>
+
+    //多个图形在做动画
+    window.onload=function () {
+        var canvasNode = document.querySelector("canvas");
+        if (canvasNode.getContext){
+            var ctx =canvasNode.getContext("2d");
+            //放随机圆的信息  圆心 半径
+            var arr =[];
+            setInterval(function () {
+
+                console.log(arr)
+                ctx.clearRect(0,0,canvasNode.width,canvasNode.height)
+
+                //动画！！！！
+                arr.forEach(function (item,index) {
+                    item.r++;
+                    item.alp-=0.01;
+                    if(item.alp<=0){
+                        arr.splice(index,1)
+                    }
+                })
+
+
+                //画圆
+                arr.forEach(function (item) {
+                    ctx.save()
+                    ctx.fillStyle="rgba("+item.red+","+item.green+","+item.blue+","+item.alp+")";
+                    ctx.beginPath()
+                    ctx.arc(item.x,item.y,item.r,0,2*Math.PI)
+                    ctx.fill()
+                    ctx.restore()
+                })
+
+            },10)
+
+
+            //提供随机圆
+            setInterval(function () {
+                var x = Math.round(Math.random()*canvasNode.width);
+                var y = Math.round(Math.random()*canvasNode.height);
+                var r = 10;
+                var red =Math.round(Math.random()*255);
+                var green =Math.round(Math.random()*255);
+                var blue =Math.round(Math.random()*255);
+                var alp =1;
+
+                arr.push({
+                    x:x,
+                    y:y,
+                    r:r,
+                    red:red,
+                    green:green,
+                    blue:blue,
+                    alp:alp
+                })
+            },100)
+        }
+    }
+</script>
+</html>

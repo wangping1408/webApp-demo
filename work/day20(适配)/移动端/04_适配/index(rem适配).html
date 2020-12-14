@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>rem适配</title>
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="index(rem适配).css">
+</head>
+<body>
+    <div data-v-7ce0a0d2="" data-v-6c28f3a4="" class="seller_header header">
+        <div data-v-7ce0a0d2="" class="top">
+        <div data-v-7ce0a0d2="" class="top_left">
+            <img data-v-7ce0a0d2="" class="avatar" src="https://fuss10.elemecdn.com/8/40/02872ce8aefe75c16d3190e75ad61jpeg.jpeg"></div><div data-v-7ce0a0d2="" class="top_right"><div data-v-7ce0a0d2="" class="title"><i data-v-7ce0a0d2="" class="brand"></i><span data-v-7ce0a0d2="" class="name">嘉禾一品（温都水城）</span></div><div data-v-7ce0a0d2="" class="delivery"><span data-v-7ce0a0d2="" class="info">硅谷专送/28分钟送达</span></div><div data-v-7ce0a0d2="" class="supports"><i data-v-0c093ace="" data-v-7ce0a0d2="" class="icon icon decrease icon-1"></i><span data-v-7ce0a0d2="" class="text"> 新用户下单立减17元(不与其它活动同享) </span></div></div></div><div data-v-7ce0a0d2="" class="bottom"><i data-v-7ce0a0d2="" class="icon"></i><span data-v-7ce0a0d2="" class="text"> 是以粥为特色的中式营养快餐，自2004年10月18日创立“嘉和一品”品牌至今，不断优化管理，积极创新，立足于“贴近百姓生活，服务千家万户” </span><i data-v-7ce0a0d2="" class="seller-keyboard_arrow_right arrow_right"></i></div><div data-v-7ce0a0d2="" class="bg"><img data-v-7ce0a0d2="" src="https://fuss10.elemecdn.com/f/5c/ead54394c3de198d3e6d3e9111bbfpng.png"></div><div data-v-7ce0a0d2="" class="mask" style="display: none;"><div data-v-7ce0a0d2="" class="contentWrap"><div data-v-7ce0a0d2="" class="content"><div data-v-7ce0a0d2="" class="title"><span data-v-7ce0a0d2="">嘉禾一品（温都水城）</span></div><div data-v-7ce0a0d2="" class="starsWrap"><div data-v-e2d81cca="" data-v-7ce0a0d2="" class="stars"><div data-v-e2d81cca="" class="star on star-48"></div><div data-v-e2d81cca="" class="star on star-48"></div><div data-v-e2d81cca="" class="star half star-48"></div><div data-v-e2d81cca="" class="star off star-48"></div><div data-v-e2d81cca="" class="star off star-48"></div></div></div><div data-v-0726ed88="" data-v-7ce0a0d2="" class="lineWrap line"><span data-v-0726ed88="" class="line"></span><span data-v-7ce0a0d2="" data-v-0726ed88="">优惠信息</span><span data-v-0726ed88="" class="line"></span></div><ul data-v-627992cc="" data-v-7ce0a0d2="" class="list"><li data-v-627992cc=""><i data-v-0c093ace="" data-v-627992cc="" class="icon icon decrease icon-2"></i><span data-v-627992cc="">新用户下单立减17元(不与其它活动同享)</span></li><li data-v-627992cc=""><i data-v-0c093ace="" data-v-627992cc="" class="icon icon discount icon-2"></i><span data-v-627992cc="">满35减19，满65减35</span></li><li data-v-627992cc=""><i data-v-0c093ace="" data-v-627992cc="" class="icon icon guarantee icon-2"></i><span data-v-627992cc="">【立减19.5元】欢乐小食餐</span></li><li data-v-627992cc=""><i data-v-0c093ace="" data-v-627992cc="" class="icon icon guarantee icon-2"></i><span data-v-627992cc="">【立减29元】火烤菠萝皇堡双人餐</span></li><li data-v-627992cc=""><i data-v-0c093ace="" data-v-627992cc="" class="icon icon guarantee icon-2"></i><span data-v-627992cc="">【立减16.5元】火烤菠萝皇堡单人餐</span></li><li data-v-627992cc=""><i data-v-0c093ace="" data-v-627992cc="" class="icon icon guarantee icon-2"></i><span data-v-627992cc="">【立减15】经典安格斯单人餐</span></li><li data-v-627992cc=""><i data-v-0c093ace="" data-v-627992cc="" class="icon icon guarantee icon-2"></i><span data-v-627992cc="">【立减11.95】皇堡双人餐</span></li><li data-v-627992cc=""><i data-v-0c093ace="" data-v-627992cc="" class="icon icon guarantee icon-2"></i><span data-v-627992cc="">【立减19.8】半价单人餐</span></li></ul><div data-v-0726ed88="" data-v-7ce0a0d2="" class="lineWrap line"><span data-v-0726ed88="" class="line"></span><span data-v-7ce0a0d2="" data-v-0726ed88="">商家公告</span><span data-v-0726ed88="" class="line"></span></div><p data-v-7ce0a0d2="" class="bulletin"> 是以粥为特色的中式营养快餐，自2004年10月18日创立“嘉和一品”品牌至今，不断优化管理，积极创新，立足于“贴近百姓生活，服务千家万户” </p></div></div><div data-v-7ce0a0d2="" class="footer"><i data-v-7ce0a0d2="" class="seller-close close"></i></div></div></div>
+</body>
+<script>
+    //16rem 也代表是布局视口的宽度
+    var layoutW = document.documentElement.clientWidth;
+    /*var html = document.querySelector("html");
+    html.style.fontSize = layoutW/16 +"px !important";*/
+    var styleNode = document.createElement("style");
+    styleNode.innerHTML = `html{font-size:${layoutW/16}px !important}`
+    document.head.appendChild(styleNode)
+</script>
+</html>
